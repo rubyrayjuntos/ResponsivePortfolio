@@ -1,263 +1,115 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
-import aboutData from '../data/about.json';
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { currentTheme, changeTheme, resetTheme } = useTheme();
   const location = useLocation();
+  const { currentTheme, changeTheme } = useTheme();
 
-  const isActive = (path) => {
-    if (path === '/') {
-      return location.pathname === '/';
+  const themes = [
+    { id: 'default', name: 'Default' },
+    { id: 'serene', name: 'Serene' },
+    { id: 'playful', name: 'Playful' },
+    { id: 'mystical', name: 'Mystical' },
+    { id: 'professional', name: 'Professional' }
+  ];
+
+  const navItems = [
+    { path: '/', label: 'Home' },
+    { path: '/portfolio', label: 'Portfolio' },
+    { path: '/about', label: 'About' },
+    { path: '/contact', label: 'Contact' }
+  ];
+
+  // Animation variants
+  const navItemVariants = {
+    hover: { 
+      y: -2,
+      transition: { duration: 0.2 }
     }
-    return location.pathname.startsWith(path);
-  };
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
   };
 
   return (
-    <header className="neumorphic-raised" style={{ 
-      margin: 'var(--spacing-lg)', 
-      padding: 'var(--spacing-lg)',
+    <header className="neumorphic-raised" style={{
+      padding: 'var(--spacing-lg) var(--spacing-xl)',
+      marginBottom: 'var(--spacing-xl)',
       position: 'sticky',
-      top: 'var(--spacing-lg)',
-      zIndex: 1000
+      top: 0,
+      zIndex: 100,
+      backdropFilter: 'blur(10px)',
+      backgroundColor: 'rgba(var(--bg-primary-rgb), 0.9)'
     }}>
-      <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      <div className="flex justify-between items-center max-w-7xl mx-auto">
         {/* Logo/Brand */}
-        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
-          <h1 className="text-embossed" style={{ 
-            margin: 0, 
-            fontSize: '1.5rem',
-            fontFamily: 'var(--font-display)'
-          }}>
-            {aboutData.name}
-          </h1>
-        </Link>
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+            <h1 className="text-embossed text-2xl font-bold">
+              Ray Swan
+            </h1>
+          </Link>
+        </motion.div>
 
-        {/* Desktop Navigation */}
-        <nav style={{ display: 'flex', gap: 'var(--spacing-lg)', alignItems: 'center' }}>
-          <Link 
-            to="/" 
-            className={`btn btn-pill ${isActive('/') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none' }}
-          >
-            HOME
-          </Link>
-          <Link 
-            to="/portfolio" 
-            className={`btn btn-pill ${isActive('/portfolio') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none' }}
-          >
-            PORTFOLIO
-          </Link>
-          <Link 
-            to="/about" 
-            className={`btn btn-pill ${isActive('/about') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none' }}
-          >
-            ABOUT
-          </Link>
-          <Link 
-            to="/contact" 
-            className={`btn btn-pill ${isActive('/contact') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none' }}
-          >
-            CONTACT
-          </Link>
-
-          {/* Theme Toggle */}
-          <div style={{ display: 'flex', gap: 'var(--spacing-sm)' }}>
-            <button 
-              className="btn btn-pill" 
-              onClick={() => changeTheme('serene')}
-              style={{ 
-                fontSize: '0.8rem',
-                padding: 'var(--spacing-sm) var(--spacing-md)',
-                opacity: currentTheme === 'serene' ? 1 : 0.6
-              }}
+        {/* Navigation */}
+        <nav className="hidden md:flex space-x-8">
+          {navItems.map((item) => (
+            <motion.div
+              key={item.path}
+              variants={navItemVariants}
+              whileHover="hover"
             >
-              🌿
-            </button>
-            <button 
-              className="btn btn-pill" 
-              onClick={() => changeTheme('playful')}
-              style={{ 
-                fontSize: '0.8rem',
-                padding: 'var(--spacing-sm) var(--spacing-md)',
-                opacity: currentTheme === 'playful' ? 1 : 0.6
-              }}
-            >
-              🎨
-            </button>
-            <button 
-              className="btn btn-pill" 
-              onClick={() => changeTheme('mystical')}
-              style={{ 
-                fontSize: '0.8rem',
-                padding: 'var(--spacing-sm) var(--spacing-md)',
-                opacity: currentTheme === 'mystical' ? 1 : 0.6
-              }}
-            >
-              ✨
-            </button>
-            <button 
-              className="btn btn-pill" 
-              onClick={resetTheme}
-              style={{ 
-                fontSize: '0.8rem',
-                padding: 'var(--spacing-sm) var(--spacing-md)',
-                opacity: currentTheme === 'default' ? 1 : 0.6
-              }}
-            >
-              🌙
-            </button>
-          </div>
+              <Link
+                to={item.path}
+                className={`text-lg font-medium transition-colors duration-200 ${
+                  location.pathname === item.path
+                    ? 'text-accent-primary'
+                    : 'text-text-primary hover:text-accent-primary'
+                }`}
+                style={{ textDecoration: 'none' }}
+              >
+                {item.label}
+              </Link>
+            </motion.div>
+          ))}
         </nav>
 
-        {/* Mobile Menu Button */}
-        <button 
-          className="btn btn-pill" 
-          onClick={toggleMenu}
-          style={{ 
-            display: 'none',
-            fontSize: '1.2rem',
-            padding: 'var(--spacing-sm)',
-            minWidth: 'auto'
-          }}
-        >
-          {isMenuOpen ? '✕' : '☰'}
-        </button>
+        {/* Theme Selector */}
+        <div className="flex items-center space-x-4">
+          <select
+            value={currentTheme}
+            onChange={(e) => changeTheme(e.target.value)}
+            className="neumorphic-inset px-3 py-2 rounded-lg text-sm bg-transparent border-none outline-none focus:ring-2 focus:ring-accent-primary"
+            style={{ color: 'var(--text-primary)' }}
+          >
+            {themes.map(theme => (
+              <option key={theme.id} value={theme.id}>
+                {theme.name}
+              </option>
+            ))}
+          </select>
+
+          {/* Mobile Menu Button */}
+          <motion.button
+            className="md:hidden btn btn-pill p-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              // Mobile menu toggle logic would go here
+              console.log('Mobile menu toggle');
+            }}
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </motion.button>
+        </div>
       </div>
 
-      {/* Mobile Navigation */}
-      {isMenuOpen && (
-        <nav style={{ 
-          display: 'flex', 
-          flexDirection: 'column', 
-          gap: 'var(--spacing-md)', 
-          marginTop: 'var(--spacing-lg)',
-          paddingTop: 'var(--spacing-lg)',
-          borderTop: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
-          <Link 
-            to="/" 
-            className={`btn btn-pill ${isActive('/') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none', textAlign: 'center' }}
-          >
-            HOME
-          </Link>
-          <Link 
-            to="/portfolio" 
-            className={`btn btn-pill ${isActive('/portfolio') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none', textAlign: 'center' }}
-          >
-            PORTFOLIO
-          </Link>
-          <Link 
-            to="/about" 
-            className={`btn btn-pill ${isActive('/about') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none', textAlign: 'center' }}
-          >
-            ABOUT
-          </Link>
-          <Link 
-            to="/contact" 
-            className={`btn btn-pill ${isActive('/contact') ? 'neumorphic-inset' : ''}`}
-            onClick={closeMenu}
-            style={{ textDecoration: 'none', textAlign: 'center' }}
-          >
-            CONTACT
-          </Link>
-
-          {/* Mobile Theme Toggle */}
-          <div style={{ 
-            display: 'flex', 
-            gap: 'var(--spacing-sm)', 
-            justifyContent: 'center',
-            marginTop: 'var(--spacing-md)'
-          }}>
-            <button 
-              className="btn btn-pill" 
-              onClick={() => changeTheme('serene')}
-              style={{ 
-                fontSize: '1rem',
-                padding: 'var(--spacing-sm)',
-                opacity: currentTheme === 'serene' ? 1 : 0.6
-              }}
-            >
-              🌿
-            </button>
-            <button 
-              className="btn btn-pill" 
-              onClick={() => changeTheme('playful')}
-              style={{ 
-                fontSize: '1rem',
-                padding: 'var(--spacing-sm)',
-                opacity: currentTheme === 'playful' ? 1 : 0.6
-              }}
-            >
-              🎨
-            </button>
-            <button 
-              className="btn btn-pill" 
-              onClick={() => changeTheme('mystical')}
-              style={{ 
-                fontSize: '1rem',
-                padding: 'var(--spacing-sm)',
-                opacity: currentTheme === 'mystical' ? 1 : 0.6
-              }}
-            >
-              ✨
-            </button>
-            <button 
-              className="btn btn-pill" 
-              onClick={resetTheme}
-              style={{ 
-                fontSize: '1rem',
-                padding: 'var(--spacing-sm)',
-                opacity: currentTheme === 'default' ? 1 : 0.6
-              }}
-            >
-              🌙
-            </button>
-          </div>
-        </nav>
-      )}
-
-      {/* Responsive Design */}
-      <style jsx>{`
-        @media (max-width: 768px) {
-          nav {
-            display: none;
-          }
-          
-          button[onClick="${toggleMenu}"] {
-            display: block !important;
-          }
-        }
-        
-        @media (min-width: 769px) {
-          button[onClick="${toggleMenu}"] {
-            display: none !important;
-          }
-        }
-      `}</style>
+      {/* Mobile Navigation Overlay */}
+      {/* This would be implemented for mobile menu */}
     </header>
   );
 };

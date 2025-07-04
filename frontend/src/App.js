@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import './styles/neumorphic.css';
 
 // Components
@@ -14,29 +15,65 @@ import ContactPage from './components/ContactPage';
 import { ThemeProvider } from './context/ThemeContext';
 import { FilterProvider } from './context/FilterContext';
 
-function App() {
-  const [currentTheme, setCurrentTheme] = useState('default');
-
-  // Apply theme to document
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', currentTheme);
-  }, [currentTheme]);
-
+// Page transition component
+const PageTransition = ({ children }) => {
+  const location = useLocation();
+  
   return (
-    <ThemeProvider initialValue={{ currentTheme, setCurrentTheme }}>
+    <motion.div
+      key={location.pathname}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProvider>
       <FilterProvider>
         <Router>
           <div className="App">
             <Header />
             <main>
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/portfolio" element={<PortfolioPage />} />
-                <Route path="/portfolio/:category" element={<PortfolioPage />} />
-                <Route path="/project/:slug" element={<ProjectDetail />} />
-                <Route path="/about" element={<AboutPage />} />
-                <Route path="/contact" element={<ContactPage />} />
-              </Routes>
+              <AnimatePresence mode="wait">
+                <Routes>
+                  <Route path="/" element={
+                    <PageTransition>
+                      <HomePage />
+                    </PageTransition>
+                  } />
+                  <Route path="/portfolio" element={
+                    <PageTransition>
+                      <PortfolioPage />
+                    </PageTransition>
+                  } />
+                  <Route path="/portfolio/:category" element={
+                    <PageTransition>
+                      <PortfolioPage />
+                    </PageTransition>
+                  } />
+                  <Route path="/project/:slug" element={
+                    <PageTransition>
+                      <ProjectDetail />
+                    </PageTransition>
+                  } />
+                  <Route path="/about" element={
+                    <PageTransition>
+                      <AboutPage />
+                    </PageTransition>
+                  } />
+                  <Route path="/contact" element={
+                    <PageTransition>
+                      <ContactPage />
+                    </PageTransition>
+                  } />
+                </Routes>
+              </AnimatePresence>
             </main>
           </div>
         </Router>

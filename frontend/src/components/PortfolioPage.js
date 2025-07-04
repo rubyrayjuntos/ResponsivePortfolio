@@ -176,8 +176,8 @@ const PortfolioPage = () => {
             <div className={layout === 'masonry' ? 'masonry' : 'grid'} style={{
               gridTemplateColumns: layout === 'grid' ? 'repeat(auto-fill, minmax(300px, 1fr))' : undefined
             }}>
-              {filteredProjects.map(project => (
-                <ProjectCard key={project.id} project={project} layout={layout} />
+              {filteredProjects.map((project, index) => (
+                <ProjectCard key={project.id} project={project} layout={layout} index={index} />
               ))}
             </div>
           )}
