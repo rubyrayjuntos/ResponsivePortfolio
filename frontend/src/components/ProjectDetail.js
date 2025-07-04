@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { useTheme } from '../context/ThemeContext';
-import projectsData from '../data/projects.json';
+import { getProjectById } from '../utils/dataResolver';
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -9,9 +9,9 @@ const ProjectDetail = () => {
   const [project, setProject] = useState(null);
   const [activeImage, setActiveImage] = useState(0);
 
-  // Find project by slug
+  // Find project by slug with resolved data
   useEffect(() => {
-    const foundProject = projectsData.projects.find(p => p.slug === slug);
+    const foundProject = getProjectById(slug);
     setProject(foundProject);
   }, [slug]);
 
@@ -24,7 +24,7 @@ const ProjectDetail = () => {
         'sacred seduction': 'mystical',
         'divine co-creation': 'mystical',
         'empowered clarity': 'professional',
-        'divine professionalism': 'professional'
+        'cosmic elegance': 'professional'
       };
       
       const theme = emotionToTheme[project.emotion] || 'default';
@@ -49,6 +49,13 @@ const ProjectDetail = () => {
       </div>
     );
   }
+
+  // Get thumbnail and gallery images
+  const thumbnail = project.media?.thumbnail || 
+                   (project.media && project.media.length > 0 ? project.media[0]?.path + project.media[0]?.filename : '');
+  
+  const galleryImages = project.media?.gallery || 
+                       (project.media && project.media.length > 1 ? project.media.slice(1).map(m => m.path + m.filename) : []);
 
   return (
     <div className="container" style={{ paddingTop: 'var(--spacing-2xl)' }}>
@@ -106,63 +113,116 @@ const ProjectDetail = () => {
                 <p>{project.year}</p>
               </div>
               <div>
-                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Type</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-xs)' }}>
-                  {project.type.map(type => (
-                    <span key={type} style={{
-                      backgroundColor: 'var(--accent-primary)',
-                      color: 'var(--bg-primary)',
-                      padding: 'var(--spacing-xs) var(--spacing-sm)',
-                      borderRadius: 'var(--radius-sm)',
-                      fontSize: '0.8rem'
-                    }}>
-                      {type}
-                    </span>
-                  ))}
-                </div>
+                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Status</h3>
+                <span style={{
+                  backgroundColor: project.status === 'completed' ? '#4CAF50' : 
+                                 project.status === 'in-progress' ? '#FFA500' : '#FF6B6B',
+                  color: 'white',
+                  padding: 'var(--spacing-xs) var(--spacing-sm)',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: '0.8rem',
+                  textTransform: 'capitalize'
+                }}>
+                  {project.status}
+                </span>
               </div>
               <div>
-                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Tools</h3>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-xs)' }}>
-                  {project.tools.map(tool => (
-                    <span key={tool} style={{
-                      backgroundColor: 'var(--bg-secondary)',
-                      color: 'var(--text-secondary)',
-                      padding: 'var(--spacing-xs) var(--spacing-sm)',
-                      borderRadius: 'var(--radius-sm)',
-                      fontSize: '0.8rem'
-                    }}>
-                      {tool}
-                    </span>
-                  ))}
-                </div>
+                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Difficulty</h3>
+                <span style={{
+                  backgroundColor: 'var(--bg-secondary)',
+                  color: 'var(--text-secondary)',
+                  padding: 'var(--spacing-xs) var(--spacing-sm)',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: '0.8rem',
+                  textTransform: 'capitalize'
+                }}>
+                  {project.difficulty}
+                </span>
+              </div>
+            </div>
+
+            {/* Project Types */}
+            <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+              <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Project Types</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-xs)' }}>
+                {project.types.map(type => (
+                  <span key={type.id} style={{
+                    backgroundColor: type.color || 'var(--accent-primary)',
+                    color: 'white',
+                    padding: 'var(--spacing-xs) var(--spacing-sm)',
+                    borderRadius: 'var(--radius-sm)',
+                    fontSize: '0.8rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--spacing-xs)'
+                  }}>
+                    {type.icon && <span>{type.icon}</span>}
+                    {type.label}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Tools & Technologies */}
+            <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+              <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Tools & Technologies</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-xs)' }}>
+                {project.tools.map(tool => (
+                  <span key={tool.id} style={{
+                    backgroundColor: 'var(--bg-secondary)',
+                    color: 'var(--text-secondary)',
+                    padding: 'var(--spacing-xs) var(--spacing-sm)',
+                    borderRadius: 'var(--radius-sm)',
+                    fontSize: '0.8rem'
+                  }}>
+                    {tool.name}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Project Tags */}
+            <div style={{ marginBottom: 'var(--spacing-lg)' }}>
+              <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--accent-primary)' }}>Tags</h3>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 'var(--spacing-xs)' }}>
+                {project.tags.map(tag => (
+                  <span key={tag.id} style={{
+                    backgroundColor: tag.color || 'var(--bg-secondary)',
+                    color: 'white',
+                    padding: 'var(--spacing-xs) var(--spacing-sm)',
+                    borderRadius: 'var(--radius-sm)',
+                    fontSize: '0.8rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--spacing-xs)'
+                  }}>
+                    {tag.icon && <span>{tag.icon}</span>}
+                    {tag.label}
+                  </span>
+                ))}
               </div>
             </div>
 
             {/* Project Links */}
             <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
-              {project.links.demo && (
+              {project.links.map(link => (
                 <a 
-                  href={project.links.demo} 
+                  key={link.id}
+                  href={link.url} 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="btn btn-pill"
-                  style={{ textDecoration: 'none' }}
+                  style={{ 
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 'var(--spacing-xs)'
+                  }}
                 >
-                  View Demo
+                  {link.icon && <span>{link.icon}</span>}
+                  {link.label}
                 </a>
-              )}
-              {project.links.github && (
-                <a 
-                  href={project.links.github} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="btn btn-pill"
-                  style={{ textDecoration: 'none' }}
-                >
-                  View Code
-                </a>
-              )}
+              ))}
             </div>
           </div>
 
@@ -172,7 +232,7 @@ const ProjectDetail = () => {
               width: '400px',
               height: '300px',
               margin: '0 auto',
-              backgroundImage: `url(${project.media.thumbnail})`,
+              backgroundImage: `url(${thumbnail})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               borderRadius: 'var(--radius-md)'
@@ -182,7 +242,7 @@ const ProjectDetail = () => {
       </section>
 
       {/* Project Gallery */}
-      {project.media.gallery && project.media.gallery.length > 0 && (
+      {galleryImages && galleryImages.length > 0 && (
         <section className="neumorphic-raised" style={{ 
           padding: 'var(--spacing-2xl)', 
           marginBottom: 'var(--spacing-xl)'
@@ -202,7 +262,7 @@ const ProjectDetail = () => {
               maxWidth: '800px',
               height: '400px',
               margin: '0 auto',
-              backgroundImage: `url(${project.media.gallery[activeImage]})`,
+              backgroundImage: `url(${galleryImages[activeImage]})`,
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               borderRadius: 'var(--radius-md)'
@@ -210,26 +270,27 @@ const ProjectDetail = () => {
           </div>
 
           {/* Thumbnail Navigation */}
-          {project.media.gallery.length > 1 && (
+          {galleryImages.length > 1 && (
             <div style={{ 
               display: 'flex', 
-              gap: 'var(--spacing-md)', 
+              gap: 'var(--spacing-sm)', 
               justifyContent: 'center',
               flexWrap: 'wrap'
             }}>
-              {project.media.gallery.map((image, index) => (
+              {galleryImages.map((image, index) => (
                 <button
                   key={index}
-                  className={`btn ${activeImage === index ? 'neumorphic-inset' : 'neumorphic-raised'}`}
                   onClick={() => setActiveImage(index)}
                   style={{
                     width: '80px',
                     height: '60px',
-                    padding: 0,
                     backgroundImage: `url(${image})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
-                    borderRadius: 'var(--radius-sm)'
+                    border: index === activeImage ? '3px solid var(--accent-primary)' : '3px solid transparent',
+                    borderRadius: 'var(--radius-sm)',
+                    cursor: 'pointer',
+                    transition: 'all var(--transition-normal)'
                   }}
                 />
               ))}
@@ -237,54 +298,6 @@ const ProjectDetail = () => {
           )}
         </section>
       )}
-
-      {/* Project Tags */}
-      <section className="neumorphic-raised" style={{ 
-        padding: 'var(--spacing-xl)',
-        marginBottom: 'var(--spacing-xl)'
-      }}>
-        <h3 style={{ marginBottom: 'var(--spacing-lg)', textAlign: 'center' }}>Tags</h3>
-        <div style={{ 
-          display: 'flex', 
-          flexWrap: 'wrap', 
-          gap: 'var(--spacing-sm)',
-          justifyContent: 'center'
-        }}>
-          {project.tags.map(tag => (
-            <span key={tag} style={{
-              backgroundColor: 'var(--bg-secondary)',
-              color: 'var(--text-secondary)',
-              padding: 'var(--spacing-sm) var(--spacing-md)',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '0.9rem'
-            }}>
-              {tag}
-            </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Navigation */}
-      <section style={{ 
-        display: 'flex', 
-        justifyContent: 'space-between',
-        gap: 'var(--spacing-lg)'
-      }}>
-        <Link 
-          to="/portfolio" 
-          className="btn btn-pill"
-          style={{ textDecoration: 'none', flex: '1', textAlign: 'center' }}
-        >
-          ← Back to Portfolio
-        </Link>
-        <Link 
-          to="/contact" 
-          className="btn btn-pill"
-          style={{ textDecoration: 'none', flex: '1', textAlign: 'center' }}
-        >
-          Get in Touch →
-        </Link>
-      </section>
     </div>
   );
 };

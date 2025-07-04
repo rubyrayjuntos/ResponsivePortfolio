@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useMemo } from 'react';
-import projectsData from '../data/projects.json';
+import { getAllProjects, getAllTypes, getAllSkills, getAllTags, searchProjects } from '../utils/dataResolver';
 
 const FilterContext = createContext();
 
@@ -13,121 +13,181 @@ export const useFilter = () => {
 
 export const FilterProvider = ({ children }) => {
   const [filters, setFilters] = useState({
-    medium: null,
     type: [],
     tools: [],
     tags: [],
-    year: null
+    year: null,
+    status: null,
+    difficulty: null
   });
 
   const [searchQuery, setSearchQuery] = useState('');
 
-  // Get all projects
-  const allProjects = projectsData.projects;
+  // Get all projects with resolved data
+  const allProjects = getAllProjects();
 
   // Filter projects based on current filters
   const filteredProjects = useMemo(() => {
-    return allProjects.filter(project => {
-      // Search query filter
-      if (searchQuery) {
-        const query = searchQuery.toLowerCase();
-        const searchableText = [
-          project.title,
-          project.subtitle,
-          project.description,
-          ...project.type,
-          ...project.tools,
-          ...project.tags
-        ].join(' ').toLowerCase();
-        
-        if (!searchableText.includes(query)) {
-          return false;
-        }
-      }
+    let projects = allProjects;
 
-      // Medium filter
-      if (filters.medium && !project.type.some(type => 
-        type.toLowerCase().includes(filters.medium.toLowerCase())
-      )) {
-        return false;
-      }
+    // Search query filter
+    if (searchQuery) {
+      projects = searchProjects(searchQuery);
+    }
 
-      // Type filter
-      if (filters.type.length > 0 && !filters.type.some(filterType =>
-        project.type.some(type => type.toLowerCase().includes(filterType.toLowerCase()))
-      )) {
-        return false;
-      }
+    // Apply filters
+    if (filters.type.length > 0) {
+      projects = projects.filter(project => 
+        project.types.some(type => 
+          filters.type.some(filterType => 
+            type.id === filterType || type.label.toLowerCase().includes(filterType.toLowerCase())
+          )
+        )
+      );
+    }
 
-      // Tools filter
-      if (filters.tools.length > 0 && !filters.tools.some(filterTool =>
-        project.tools.some(tool => tool.toLowerCase().includes(filterTool.toLowerCase()))
-      )) {
-        return false;
-      }
+    if (filters.tools.length > 0) {
+      projects = projects.filter(project => 
+        project.tools.some(tool => 
+          filters.tools.some(filterTool => 
+            tool.id === filterTool || tool.name.toLowerCase().includes(filterTool.toLowerCase())
+          )
+        )
+      );
+    }
 
-      // Tags filter
-      if (filters.tags.length > 0 && !filters.tags.some(filterTag =>
-        project.tags.some(tag => tag.toLowerCase().includes(filterTag.toLowerCase()))
-      )) {
-        return false;
-      }
+    if (filters.tags.length > 0) {
+      projects = projects.filter(project => 
+        project.tags.some(tag => 
+          filters.tags.some(filterTag => 
+            tag.id === filterTag || tag.label.toLowerCase().includes(filterTag.toLowerCase())
+          )
+        )
+      );
+    }
 
-      // Year filter
-      if (filters.year && project.year !== filters.year) {
-        return false;
-      }
+    if (filters.year) {
+      projects = projects.filter(project => project.year === filters.year);
+    }
 
-      return true;
-    });
+    if (filters.status) {
+      projects = projects.filter(project => project.status === filters.status);
+    }
+
+    if (filters.difficulty) {
+      projects = projects.filter(project => project.difficulty === filters.difficulty);
+    }
+
+    return projects;
   }, [allProjects, filters, searchQuery]);
 
   // Get available facets for current filtered projects
   const facets = useMemo(() => {
     const facetData = {
-      type: {},
+      types: {},
       tools: {},
       tags: {},
-      year: {}
+      years: {},
+      statuses: {},
+      difficulties: {}
     };
 
     filteredProjects.forEach(project => {
       // Count types
-      project.type.forEach(type => {
-        facetData.type[type] = (facetData.type[type] || 0) + 1;
+      project.types.forEach(type => {
+        const key = type.label;
+        facetData.types[key] = (facetData.types[key] || 0) + 1;
       });
 
       // Count tools
       project.tools.forEach(tool => {
-        facetData.tools[tool] = (facetData.tools[tool] || 0) + 1;
+        const key = tool.name;
+        facetData.tools[key] = (facetData.tools[key] || 0) + 1;
       });
 
       // Count tags
       project.tags.forEach(tag => {
-        facetData.tags[tag] = (facetData.tags[tag] || 0) + 1;
+        const key = tag.label;
+        facetData.tags[key] = (facetData.tags[key] || 0) + 1;
       });
 
       // Count years
-      facetData.year[project.year] = (facetData.year[project.year] || 0) + 1;
+      facetData.years[project.year] = (facetData.years[project.year] || 0) + 1;
+
+      // Count statuses
+      facetData.statuses[project.status] = (facetData.statuses[project.status] || 0) + 1;
+
+      // Count difficulties
+      facetData.difficulties[project.difficulty] = (facetData.difficulties[project.difficulty] || 0) + 1;
     });
 
     return facetData;
   }, [filteredProjects]);
 
+  // Get all available filter options
+  const filterOptions = useMemo(() => {
+    const allTypes = getAllTypes();
+    const allSkills = getAllSkills();
+    const allTags = getAllTags();
+
+    return {
+      types: allTypes.map(type => ({
+        id: type.id,
+        label: type.label,
+        category: type.category,
+        icon: type.icon,
+        color: type.color
+      })),
+      tools: allSkills.map(skill => ({
+        id: skill.id,
+        label: skill.name,
+        level: skill.level,
+        description: skill.description
+      })),
+      tags: allTags.map(tag => ({
+        id: tag.id,
+        label: tag.label,
+        category: tag.category,
+        icon: tag.icon,
+        color: tag.color
+      })),
+      years: Array.from(new Set(allProjects.map(p => p.year))).sort((a, b) => b - a),
+      statuses: ['completed', 'in-progress', 'planned', 'archived'],
+      difficulties: ['beginner', 'intermediate', 'advanced', 'expert']
+    };
+  }, [allProjects]);
+
   const updateFilter = (filterType, value) => {
-    setFilters(prev => ({
-      ...prev,
-      [filterType]: value
-    }));
+    setFilters(prev => {
+      if (Array.isArray(prev[filterType])) {
+        // Handle array filters (types, tools, tags)
+        const currentArray = prev[filterType];
+        const newArray = currentArray.includes(value)
+          ? currentArray.filter(item => item !== value)
+          : [...currentArray, value];
+        
+        return {
+          ...prev,
+          [filterType]: newArray
+        };
+      } else {
+        // Handle single value filters (year, status, difficulty)
+        return {
+          ...prev,
+          [filterType]: prev[filterType] === value ? null : value
+        };
+      }
+    });
   };
 
   const clearFilters = () => {
     setFilters({
-      medium: null,
       type: [],
       tools: [],
       tags: [],
-      year: null
+      year: null,
+      status: null,
+      difficulty: null
     });
     setSearchQuery('');
   };
@@ -137,6 +197,7 @@ export const FilterProvider = ({ children }) => {
     searchQuery,
     filteredProjects,
     facets,
+    filterOptions,
     updateFilter,
     setSearchQuery,
     clearFilters

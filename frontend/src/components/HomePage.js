@@ -1,15 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { useFilter } from '../context/FilterContext';
+import { getAllProjects } from '../utils/dataResolver';
 import aboutData from '../data/about.json';
-import projectsData from '../data/projects.json';
 
 const HomePage = () => {
-  const { filteredProjects } = useFilter();
-  
-  // Get featured project
-  const featuredProject = projectsData.projects.find(project => project.highlight);
+  // Get featured project with resolved data
+  const allProjects = getAllProjects();
+  const featuredProject = allProjects.find(project => project.highlight);
 
   // Animation variants
   const containerVariants = {
@@ -186,6 +184,39 @@ const HomePage = () => {
                 {featuredProject.description}
               </p>
               
+              {/* Project Types */}
+              <motion.div 
+                style={{ 
+                  display: 'flex', 
+                  gap: 'var(--spacing-sm)', 
+                  flexWrap: 'wrap',
+                  marginBottom: 'var(--spacing-lg)'
+                }}
+                variants={containerVariants}
+              >
+                {featuredProject.types.slice(0, 2).map((type, index) => (
+                  <motion.span 
+                    key={type.id}
+                    style={{
+                      backgroundColor: type.color || 'var(--accent-primary)',
+                      color: 'white',
+                      padding: 'var(--spacing-xs) var(--spacing-sm)',
+                      borderRadius: 'var(--radius-sm)',
+                      fontSize: '0.8rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-xs)'
+                    }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
+                  >
+                    {type.icon && <span>{type.icon}</span>}
+                    {type.label}
+                  </motion.span>
+                ))}
+              </motion.div>
+
               {/* Project Tags */}
               <motion.div 
                 style={{ 
@@ -198,31 +229,46 @@ const HomePage = () => {
               >
                 {featuredProject.tags.slice(0, 3).map((tag, index) => (
                   <motion.span 
-                    key={tag} 
-                    className="neumorphic-inset" 
+                    key={tag.id}
                     style={{
+                      backgroundColor: 'var(--bg-secondary)',
+                      color: 'var(--text-secondary)',
                       padding: 'var(--spacing-xs) var(--spacing-sm)',
+                      borderRadius: 'var(--radius-sm)',
                       fontSize: '0.8rem',
-                      borderRadius: 'var(--radius-sm)'
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-xs)'
                     }}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.05 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
                   >
-                    {tag}
+                    {tag.icon && <span>{tag.icon}</span>}
+                    {tag.label}
                   </motion.span>
                 ))}
               </motion.div>
 
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+              <motion.div 
+                style={{ display: 'flex', gap: 'var(--spacing-md)' }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.6 }}
               >
                 <Link 
-                  to={`/project/${featuredProject.slug}`} 
+                  to={`/project/${featuredProject.slug}`}
                   className="btn btn-pill"
                   style={{ textDecoration: 'none' }}
                 >
                   View Project
+                </Link>
+                <Link 
+                  to="/portfolio"
+                  className="btn btn-pill"
+                  style={{ textDecoration: 'none' }}
+                >
+                  View All Projects
                 </Link>
               </motion.div>
             </motion.div>
@@ -231,66 +277,135 @@ const HomePage = () => {
               style={{ flex: '1', textAlign: 'center' }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
             >
               <div className="neumorphic-inset" style={{
-                width: '300px',
-                height: '200px',
+                width: '400px',
+                height: '300px',
                 margin: '0 auto',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundImage: `url(${featuredProject.media.thumbnail})`,
+                backgroundImage: `url(${featuredProject.media?.thumbnail || 
+                  (featuredProject.media && featuredProject.media.length > 0 ? 
+                   featuredProject.media[0]?.path + featuredProject.media[0]?.filename : '')})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 borderRadius: 'var(--radius-md)'
-              }}>
-                {!featuredProject.media.thumbnail && (
-                  <span style={{ color: 'var(--text-secondary)' }}>
-                    Project Preview
-                  </span>
-                )}
-              </div>
+              }} />
             </motion.div>
           </div>
         </motion.section>
       )}
 
-      {/* Quick Stats */}
+      {/* Recent Projects */}
       <motion.section 
         className="neumorphic-raised" 
         style={{ 
-          padding: 'var(--spacing-xl)', 
+          padding: 'var(--spacing-2xl)', 
           marginBottom: 'var(--spacing-2xl)'
         }}
         variants={itemVariants}
       >
-        <div style={{ 
-          display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-          gap: 'var(--spacing-lg)',
+        <h2 className="text-embossed" style={{ 
+          fontSize: '2rem', 
+          marginBottom: 'var(--spacing-xl)',
           textAlign: 'center'
         }}>
-          {[
-            { value: projectsData.projects.length, label: 'Projects' },
-            { value: new Set(projectsData.projects.flatMap(p => p.tools)).size, label: 'Technologies' },
-            { value: new Set(projectsData.projects.flatMap(p => p.type)).size, label: 'Categories' },
-            { value: new Date().getFullYear() - 2020, label: 'Years Experience' }
-          ].map((stat, index) => (
+          Recent Projects
+        </h2>
+        
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: 'var(--spacing-lg)'
+        }}>
+          {allProjects.slice(0, 3).map((project, index) => (
             <motion.div
-              key={stat.label}
+              key={project.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 * index }}
-              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
+              whileHover={{ y: -5 }}
             >
-              <h3 className="text-embossed" style={{ fontSize: '2rem', marginBottom: 'var(--spacing-sm)' }}>
-                {stat.value}
-              </h3>
-              <p style={{ color: 'var(--text-secondary)' }}>{stat.label}</p>
+              <Link 
+                to={`/project/${project.slug}`}
+                className="neumorphic-raised" 
+                style={{ 
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  display: 'block',
+                  padding: 'var(--spacing-lg)',
+                  borderRadius: 'var(--radius-md)',
+                  transition: 'all var(--transition-normal)'
+                }}
+              >
+                <div style={{
+                  width: '100%',
+                  height: '150px',
+                  backgroundImage: `url(${project.media?.thumbnail || 
+                    (project.media && project.media.length > 0 ? 
+                     project.media[0]?.path + project.media[0]?.filename : '')})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: 'var(--radius-sm)',
+                  marginBottom: 'var(--spacing-md)'
+                }} />
+                
+                <h3 style={{ 
+                  fontSize: '1.2rem', 
+                  marginBottom: 'var(--spacing-sm)',
+                  color: 'var(--text-primary)'
+                }}>
+                  {project.title}
+                </h3>
+                
+                <p style={{ 
+                  fontSize: '0.9rem',
+                  color: 'var(--text-secondary)',
+                  marginBottom: 'var(--spacing-md)',
+                  lineHeight: 1.4
+                }}>
+                  {project.subtitle}
+                </p>
+
+                <div style={{ 
+                  display: 'flex', 
+                  gap: 'var(--spacing-xs)', 
+                  flexWrap: 'wrap'
+                }}>
+                  {project.types.slice(0, 1).map(type => (
+                    <span key={type.id} style={{
+                      backgroundColor: type.color || 'var(--accent-primary)',
+                      color: 'white',
+                      padding: 'var(--spacing-xs) var(--spacing-sm)',
+                      borderRadius: 'var(--radius-sm)',
+                      fontSize: '0.7rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--spacing-xs)'
+                    }}>
+                      {type.icon && <span>{type.icon}</span>}
+                      {type.label}
+                    </span>
+                  ))}
+                </div>
+              </Link>
             </motion.div>
           ))}
         </div>
+
+        <motion.div 
+          style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <Link 
+            to="/portfolio"
+            className="btn btn-pill"
+            style={{ textDecoration: 'none' }}
+          >
+            View All Projects
+          </Link>
+        </motion.div>
       </motion.section>
 
       {/* Call to Action */}
@@ -313,15 +428,36 @@ const HomePage = () => {
           marginBottom: 'var(--spacing-xl)',
           color: 'var(--text-secondary)'
         }}>
-          Let's bring your ideas to life with innovative design and cutting-edge technology.
+          Let's create something amazing together.
         </p>
-        <motion.div
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+        <motion.div 
+          style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}
+          variants={containerVariants}
         >
-          <Link to="/contact" className="btn btn-pill" style={{ textDecoration: 'none' }}>
-            Get In Touch
-          </Link>
+          <motion.div variants={itemVariants}>
+            <Link 
+              to="/contact"
+              className="btn btn-pill"
+              style={{ textDecoration: 'none' }}
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              Get in Touch
+            </Link>
+          </motion.div>
+          <motion.div variants={itemVariants}>
+            <Link 
+              to="/about"
+              className="btn btn-pill"
+              style={{ textDecoration: 'none' }}
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              Learn More
+            </Link>
+          </motion.div>
         </motion.div>
       </motion.section>
     </motion.div>

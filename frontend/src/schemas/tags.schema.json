@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Tags Schema",
+  "description": "Schema for project tags with categories and relationships",
+  "type": "object",
+  "properties": {
+    "tags": {
+      "type": "array",
+      "description": "Array of tag definitions",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "description", "category"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique tag identifier",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "label": {
+            "type": "string",
+            "description": "Tag display name",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "description": "Tag description",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "emotion": {
+            "type": "string",
+            "description": "Emotional descriptor for the tag",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "visual": {
+            "type": "string",
+            "description": "Visual description for the tag",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "category": {
+            "type": "string",
+            "description": "Tag category for grouping",
+            "enum": [
+              "technology",
+              "aesthetic",
+              "mood",
+              "platform",
+              "game",
+              "content",
+              "experience",
+              "language",
+              "creative",
+              "social",
+              "environment",
+              "design",
+              "personal"
+            ]
+          },
+          "color": {
+            "type": "string",
+            "description": "Tag color for visualization",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "icon": {
+            "type": "string",
+            "description": "Tag icon (emoji)",
+            "maxLength": 10
+          },
+          "priority": {
+            "type": "integer",
+            "description": "Display priority (1-100, 1 being highest)",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 50
+          },
+          "usage": {
+            "type": "integer",
+            "description": "Number of projects using this tag",
+            "minimum": 0,
+            "default": 0
+          },
+          "related": {
+            "type": "array",
+            "description": "Related tag IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "maxItems": 10
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional tag metadata",
+            "properties": {
+              "created": {
+                "type": "string",
+                "description": "Tag creation date",
+                "format": "date"
+              },
+              "lastUsed": {
+                "type": "string",
+                "description": "Last used date",
+                "format": "date"
+              },
+              "trending": {
+                "type": "boolean",
+                "description": "Whether tag is trending"
+              },
+              "featured": {
+                "type": "boolean",
+                "description": "Whether tag is featured"
+              },
+              "synonyms": {
+                "type": "array",
+                "description": "Alternative names for the tag",
+                "items": {
+                  "type": "string"
+                },
+                "maxItems": 5
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 200
+    }
+  },
+  "required": ["tags"]
+} 

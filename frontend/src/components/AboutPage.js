@@ -1,8 +1,17 @@
 import React from 'react';
 import aboutData from '../data/about.json';
-import skillsData from '../data/skills.json';
+import { getAllSkills, getSkillsByCategory } from '../utils/dataResolver';
 
 const AboutPage = () => {
+  // Get all skills and group them by category
+  const allSkills = getAllSkills();
+  const skillCategories = [
+    'Frontend Development',
+    'Backend Development', 
+    'Design & Creative',
+    'Tools & Technologies'
+  ];
+
   return (
     <div className="container" style={{ paddingTop: 'var(--spacing-2xl)' }}>
       {/* Hero Section */}
@@ -68,53 +77,68 @@ const AboutPage = () => {
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: 'var(--spacing-xl)'
         }}>
-          {skillsData.map(category => (
-            <div key={category.category} className="neumorphic-inset" style={{ 
-              padding: 'var(--spacing-lg)'
-            }}>
-              <h3 style={{ 
-                fontSize: '1.5rem', 
-                marginBottom: 'var(--spacing-lg)',
-                color: 'var(--accent-primary)',
-                textAlign: 'center'
+          {skillCategories.map(category => {
+            const categorySkills = getSkillsByCategory(category);
+            if (categorySkills.length === 0) return null;
+            
+            return (
+              <div key={category} className="neumorphic-inset" style={{ 
+                padding: 'var(--spacing-lg)'
               }}>
-                {category.category}
-              </h3>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
-                {category.skills.map(skill => (
-                  <div key={skill.name}>
-                    <div style={{ 
-                      display: 'flex', 
-                      justifyContent: 'space-between',
-                      marginBottom: 'var(--spacing-xs)'
-                    }}>
-                      <span style={{ fontSize: '0.9rem' }}>{skill.name}</span>
-                      <span style={{ 
-                        fontSize: '0.8rem', 
-                        color: 'var(--text-secondary)' 
+                <h3 style={{ 
+                  fontSize: '1.5rem', 
+                  marginBottom: 'var(--spacing-lg)',
+                  color: 'var(--accent-primary)',
+                  textAlign: 'center'
+                }}>
+                  {category}
+                </h3>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--spacing-md)' }}>
+                  {categorySkills.map(skill => (
+                    <div key={skill.id}>
+                      <div style={{ 
+                        display: 'flex', 
+                        justifyContent: 'space-between',
+                        marginBottom: 'var(--spacing-xs)'
                       }}>
-                        {skill.level}%
-                      </span>
-                    </div>
-                    <div className="neumorphic-inset" style={{
-                      height: '8px',
-                      borderRadius: 'var(--radius-sm)',
-                      overflow: 'hidden'
-                    }}>
-                      <div style={{
-                        width: `${skill.level}%`,
-                        height: '100%',
-                        backgroundColor: 'var(--accent-primary)',
+                        <span style={{ fontSize: '0.9rem' }}>{skill.name}</span>
+                        <span style={{ 
+                          fontSize: '0.8rem', 
+                          color: 'var(--text-secondary)' 
+                        }}>
+                          {skill.level}%
+                        </span>
+                      </div>
+                      <div className="neumorphic-inset" style={{
+                        height: '8px',
                         borderRadius: 'var(--radius-sm)',
-                        transition: 'width 1s ease-in-out'
-                      }} />
+                        overflow: 'hidden'
+                      }}>
+                        <div style={{
+                          width: `${skill.level}%`,
+                          height: '100%',
+                          backgroundColor: 'var(--accent-primary)',
+                          borderRadius: 'var(--radius-sm)',
+                          transition: 'width 1s ease-in-out'
+                        }} />
+                      </div>
+                      {skill.description && (
+                        <p style={{ 
+                          fontSize: '0.8rem', 
+                          color: 'var(--text-secondary)',
+                          marginTop: 'var(--spacing-xs)',
+                          lineHeight: 1.4
+                        }}>
+                          {skill.description}
+                        </p>
+                      )}
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
@@ -199,7 +223,7 @@ const AboutPage = () => {
           Let's create something extraordinary together.
         </p>
         <a 
-          href={`mailto:${aboutData.contact.email}`}
+          href="/contact" 
           className="btn btn-pill"
           style={{ textDecoration: 'none' }}
         >

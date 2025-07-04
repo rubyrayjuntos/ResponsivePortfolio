@@ -1,0 +1,121 @@
+{
+  "types": [
+    {
+      "id": "game-design",
+      "label": "Game Design",
+      "description": "Interactive game development and design",
+      "category": "creative",
+      "icon": "🎮",
+      "color": "#FF6B6B",
+      "priority": 1
+    },
+    {
+      "id": "frontend-development",
+      "label": "Frontend Development",
+      "description": "User interface and client-side development",
+      "category": "development",
+      "icon": "💻",
+      "color": "#4ECDC4",
+      "priority": 2
+    },
+    {
+      "id": "pwa",
+      "label": "PWA",
+      "description": "Progressive Web Applications",
+      "category": "development",
+      "icon": "📱",
+      "color": "#45B7D1",
+      "priority": 3
+    },
+    {
+      "id": "creative-technology",
+      "label": "Creative Technology",
+      "description": "Art and technology intersections",
+      "category": "creative",
+      "icon": "🎨",
+      "color": "#96CEB4",
+      "priority": 4
+    },
+    {
+      "id": "conversational-ai",
+      "label": "Conversational AI",
+      "description": "AI-powered conversation systems",
+      "category": "ai",
+      "icon": "🤖",
+      "color": "#FFEAA7",
+      "priority": 5
+    },
+    {
+      "id": "ai-collaboration",
+      "label": "AI Collaboration",
+      "description": "Multi-agent AI systems",
+      "category": "ai",
+      "icon": "🧠",
+      "color": "#DDA0DD",
+      "priority": 6
+    },
+    {
+      "id": "platform-design",
+      "label": "Platform Design",
+      "description": "Platform and ecosystem design",
+      "category": "design",
+      "icon": "🏗️",
+      "color": "#F7DC6F",
+      "priority": 7
+    },
+    {
+      "id": "ai-workflow",
+      "label": "AI Workflow",
+      "description": "AI-powered automation systems",
+      "category": "ai",
+      "icon": "⚙️",
+      "color": "#BB8FCE",
+      "priority": 8
+    },
+    {
+      "id": "creative-tools",
+      "label": "Creative Tools",
+      "description": "Tools for creative professionals",
+      "category": "creative",
+      "icon": "🛠️",
+      "color": "#85C1E9",
+      "priority": 9
+    },
+    {
+      "id": "branding-system",
+      "label": "Branding System",
+      "description": "Brand identity and design systems",
+      "category": "design",
+      "icon": "🎯",
+      "color": "#F8C471",
+      "priority": 10
+    },
+    {
+      "id": "portfolio",
+      "label": "Portfolio",
+      "description": "Personal portfolio websites",
+      "category": "personal",
+      "icon": "📄",
+      "color": "#A9DFBF",
+      "priority": 11
+    },
+    {
+      "id": "full-stack-app",
+      "label": "Full Stack App",
+      "description": "Complete web applications",
+      "category": "development",
+      "icon": "🌐",
+      "color": "#F1948A",
+      "priority": 12
+    },
+    {
+      "id": "personal-brand",
+      "label": "Personal Brand",
+      "description": "Personal branding and identity",
+      "category": "personal",
+      "icon": "👤",
+      "color": "#D7BDE2",
+      "priority": 13
+    }
+  ]
+} 

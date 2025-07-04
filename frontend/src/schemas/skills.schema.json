@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Skills Schema",
+  "description": "Schema for skills and tools organized by categories",
+  "type": "object",
+  "properties": {
+    "skills": {
+      "type": "array",
+      "description": "Array of skill categories",
+      "items": {
+        "type": "object",
+        "required": ["category", "description", "skills"],
+        "properties": {
+          "category": {
+            "type": "string",
+            "description": "Skill category name",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "description": "Category description",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "icon": {
+            "type": "string",
+            "description": "Category icon (emoji)",
+            "maxLength": 10
+          },
+          "color": {
+            "type": "string",
+            "description": "Category color for visualization",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "skills": {
+            "type": "array",
+            "description": "Array of skills in this category",
+            "items": {
+              "type": "object",
+              "required": ["id", "name", "level"],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "description": "Unique skill identifier",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "name": {
+                  "type": "string",
+                  "description": "Skill name",
+                  "minLength": 1,
+                  "maxLength": 50
+                },
+                "level": {
+                  "type": "integer",
+                  "description": "Proficiency level (0-100)",
+                  "minimum": 0,
+                  "maximum": 100
+                },
+                "description": {
+                  "type": "string",
+                  "description": "Skill description",
+                  "minLength": 1,
+                  "maxLength": 200
+                },
+                "icon": {
+                  "type": "string",
+                  "description": "Skill icon (emoji)",
+                  "maxLength": 10
+                },
+                "color": {
+                  "type": "string",
+                  "description": "Skill color",
+                  "pattern": "^#[0-9A-Fa-f]{6}$"
+                },
+                "years": {
+                  "type": "integer",
+                  "description": "Years of experience",
+                  "minimum": 0,
+                  "maximum": 50
+                },
+                "certifications": {
+                  "type": "array",
+                  "description": "Related certifications",
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 10
+                },
+                "projects": {
+                  "type": "array",
+                  "description": "Projects using this skill",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^[a-z0-9-]+$"
+                  },
+                  "maxItems": 20
+                },
+                "metadata": {
+                  "type": "object",
+                  "description": "Additional skill metadata",
+                  "properties": {
+                    "firstUsed": {
+                      "type": "string",
+                      "description": "First used date",
+                      "format": "date"
+                    },
+                    "lastUsed": {
+                      "type": "string",
+                      "description": "Last used date",
+                      "format": "date"
+                    },
+                    "favorite": {
+                      "type": "boolean",
+                      "description": "Whether this is a favorite skill"
+                    },
+                    "learning": {
+                      "type": "boolean",
+                      "description": "Whether currently learning"
+                    }
+                  }
+                }
+              }
+            },
+            "minItems": 1,
+            "maxItems": 50
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 20
+    }
+  },
+  "required": ["skills"]
+} 

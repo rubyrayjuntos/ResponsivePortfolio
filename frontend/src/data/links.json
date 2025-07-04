@@ -1,0 +1,158 @@
+{
+  "links": [
+    {
+      "id": "astronova-demo",
+      "type": "demo",
+      "url": "https://rubyrayjuntos.github.io/AstroNova/",
+      "description": "Live demo of AstroNova mobile asteroids game",
+      "project": "astronova-asteroids",
+      "icon": "🎮",
+      "label": "Play Demo",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "id": "astronova-github",
+      "type": "github",
+      "url": "https://github.com/rubyrayjuntos/AstroNova",
+      "description": "Source code for AstroNova game",
+      "project": "astronova-asteroids",
+      "icon": "📦",
+      "label": "View Code",
+      "status": "active",
+      "priority": 2
+    },
+    {
+      "id": "cartas-demo",
+      "type": "demo",
+      "url": "https://vitea-tsre.vercel.app",
+      "description": "Live demo of Cartas del Deseo tarot app",
+      "project": "cartas-del-deseo",
+      "icon": "🔮",
+      "label": "Try Reading",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "id": "cartas-github",
+      "type": "github",
+      "url": "https://github.com/rubyrayjuntos/cartas-del-deseo",
+      "description": "Source code for Cartas del Deseo",
+      "project": "cartas-del-deseo",
+      "icon": "📦",
+      "label": "View Code",
+      "status": "active",
+      "priority": 2
+    },
+    {
+      "id": "nova-demo",
+      "type": "demo",
+      "url": "https://your-nova-deployment-url.com",
+      "description": "NOVA Writers Conspiracy platform",
+      "project": "nova-writers-conspiracy",
+      "icon": "✍️",
+      "label": "Join Conspiracy",
+      "status": "development",
+      "priority": 1
+    },
+    {
+      "id": "nova-github",
+      "type": "github",
+      "url": "https://github.com/your-org/nova-writers-conspiracy",
+      "description": "Source code for NOVA platform",
+      "project": "nova-writers-conspiracy",
+      "icon": "📦",
+      "label": "View Code",
+      "status": "private",
+      "priority": 2
+    },
+    {
+      "id": "brand-demo",
+      "type": "demo",
+      "url": "https://your-deploy-url.com/simple_brand_gui.html",
+      "description": "Brand Identity Workflow demo",
+      "project": "brand-identity-workflow",
+      "icon": "🎨",
+      "label": "Create Brand",
+      "status": "development",
+      "priority": 1
+    },
+    {
+      "id": "brand-github",
+      "type": "github",
+      "url": "https://github.com/your-org/brand-identity-workflow",
+      "description": "Source code for brand workflow system",
+      "project": "brand-identity-workflow",
+      "icon": "📦",
+      "label": "View Code",
+      "status": "private",
+      "priority": 2
+    },
+    {
+      "id": "portfolio-demo",
+      "type": "demo",
+      "url": "https://ray-swan-portfolio.vercel.app",
+      "description": "Live portfolio website",
+      "project": "ray-swan-portfolio",
+      "icon": "🌐",
+      "label": "Visit Site",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "id": "portfolio-github",
+      "type": "github",
+      "url": "https://github.com/rubyrayjuntos/ray-swan-portfolio",
+      "description": "Source code for portfolio website",
+      "project": "ray-swan-portfolio",
+      "icon": "📦",
+      "label": "View Code",
+      "status": "active",
+      "priority": 2
+    },
+    {
+      "id": "ray-github",
+      "type": "github",
+      "url": "https://github.com/rubyrayjuntos",
+      "description": "Personal GitHub profile",
+      "project": null,
+      "icon": "👨‍💻",
+      "label": "GitHub",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "id": "ray-linkedin",
+      "type": "linkedin",
+      "url": "https://linkedin.com/in/raycswan",
+      "description": "Professional LinkedIn profile",
+      "project": null,
+      "icon": "💼",
+      "label": "LinkedIn",
+      "status": "active",
+      "priority": 2
+    },
+    {
+      "id": "ray-twitter",
+      "type": "twitter",
+      "url": "https://twitter.com/yourhandle",
+      "description": "Personal Twitter/X profile",
+      "project": null,
+      "icon": "🐦",
+      "label": "Twitter",
+      "status": "active",
+      "priority": 3
+    },
+    {
+      "id": "ray-email",
+      "type": "email",
+      "url": "mailto:hello@yourportfolio.com",
+      "description": "Primary contact email",
+      "project": null,
+      "icon": "✉️",
+      "label": "Email",
+      "status": "active",
+      "priority": 1
+    }
+  ]
+} 

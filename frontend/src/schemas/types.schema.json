@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Types Schema",
+  "description": "Schema for project types and categories",
+  "type": "object",
+  "properties": {
+    "types": {
+      "type": "array",
+      "description": "Array of project type definitions",
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "description", "category"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique identifier for the type",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "label": {
+            "type": "string",
+            "description": "Human-readable type name",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "description": {
+            "type": "string",
+            "description": "Type description",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "category": {
+            "type": "string",
+            "description": "Type category for grouping",
+            "enum": [
+              "creative",
+              "development",
+              "ai",
+              "design",
+              "personal"
+            ]
+          },
+          "icon": {
+            "type": "string",
+            "description": "Type icon (emoji)",
+            "maxLength": 10
+          },
+          "color": {
+            "type": "string",
+            "description": "Type color for visualization",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "priority": {
+            "type": "integer",
+            "description": "Display priority (1-100, 1 being highest)",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 50
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 50
+    }
+  },
+  "required": ["types"]
+} 

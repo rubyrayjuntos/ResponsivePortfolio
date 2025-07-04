@@ -1,0 +1,180 @@
+{
+  "media": [
+    {
+      "id": "astronova-thumb",
+      "filename": "image-1751275271504-412693276.jpg",
+      "path": "/uploads/",
+      "description": "AstroNova game screenshot showing the mobile interface",
+      "alt": "Mobile asteroids game interface with neon graphics",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "jpg",
+      "size": "245KB",
+      "project": "astronova-asteroids",
+      "category": "thumbnail"
+    },
+    {
+      "id": "astronova-gallery-1",
+      "filename": "image-1751275271523-896378493.jpg",
+      "path": "/uploads/",
+      "description": "AstroNova gameplay screenshot",
+      "alt": "Asteroids game in action with particle effects",
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "type": "image",
+      "format": "jpg",
+      "size": "456KB",
+      "project": "astronova-asteroids",
+      "category": "gallery"
+    },
+    {
+      "id": "cartas-thumb",
+      "filename": "image-1751272273801-818786439.png",
+      "path": "/uploads/",
+      "description": "Cartas del Deseo tarot interface",
+      "alt": "Tarot card reading interface with mystical design",
+      "dimensions": {
+        "width": 600,
+        "height": 400
+      },
+      "type": "image",
+      "format": "png",
+      "size": "189KB",
+      "project": "cartas-del-deseo",
+      "category": "thumbnail"
+    },
+    {
+      "id": "cartas-gallery-1",
+      "filename": "image-1751275652851-408588635.jpg",
+      "path": "/uploads/",
+      "description": "Cartas del Deseo reading session",
+      "alt": "Tarot reading in progress with animated cards",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "jpg",
+      "size": "312KB",
+      "project": "cartas-del-deseo",
+      "category": "gallery"
+    },
+    {
+      "id": "nova-thumb",
+      "filename": "image-1751348320898-1997273.png",
+      "path": "/uploads/",
+      "description": "NOVA Writers Conspiracy dashboard",
+      "alt": "Collaborative writing platform interface",
+      "dimensions": {
+        "width": 1000,
+        "height": 700
+      },
+      "type": "image",
+      "format": "png",
+      "size": "567KB",
+      "project": "nova-writers-conspiracy",
+      "category": "thumbnail"
+    },
+    {
+      "id": "nova-gallery-1",
+      "filename": "image-1751348320969-368017186.png",
+      "path": "/uploads/",
+      "description": "NOVA AI agents interface",
+      "alt": "AI writing assistants and collaboration tools",
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "type": "image",
+      "format": "png",
+      "size": "789KB",
+      "project": "nova-writers-conspiracy",
+      "category": "gallery"
+    },
+    {
+      "id": "brand-thumb",
+      "filename": "image-1751272273801-818786439.png",
+      "path": "/uploads/",
+      "description": "Brand Identity Workflow interface",
+      "alt": "AI-powered brand generation interface",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "png",
+      "size": "234KB",
+      "project": "brand-identity-workflow",
+      "category": "thumbnail"
+    },
+    {
+      "id": "brand-gallery-1",
+      "filename": "image-1751276238436-162990766.jpg",
+      "path": "/uploads/",
+      "description": "Brand workflow automation process",
+      "alt": "Multi-agent brand creation workflow",
+      "dimensions": {
+        "width": 1000,
+        "height": 700
+      },
+      "type": "image",
+      "format": "jpg",
+      "size": "445KB",
+      "project": "brand-identity-workflow",
+      "category": "gallery"
+    },
+    {
+      "id": "portfolio-thumb",
+      "filename": "image-1751272479804-311588878.png",
+      "path": "/uploads/",
+      "description": "Ray Swan Portfolio homepage",
+      "alt": "Personal portfolio website with neumorphic design",
+      "dimensions": {
+        "width": 1200,
+        "height": 800
+      },
+      "type": "image",
+      "format": "png",
+      "size": "678KB",
+      "project": "ray-swan-portfolio",
+      "category": "thumbnail"
+    },
+    {
+      "id": "portfolio-gallery-1",
+      "filename": "image-1751272482308-370740828.png",
+      "path": "/uploads/",
+      "description": "Portfolio project showcase",
+      "alt": "Interactive project gallery with animations",
+      "dimensions": {
+        "width": 1000,
+        "height": 700
+      },
+      "type": "image",
+      "format": "png",
+      "size": "523KB",
+      "project": "ray-swan-portfolio",
+      "category": "gallery"
+    },
+    {
+      "id": "portfolio-gallery-2",
+      "filename": "image-1751272485244-258038440.png",
+      "path": "/uploads/",
+      "description": "Portfolio responsive design",
+      "alt": "Mobile and tablet responsive layouts",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "png",
+      "size": "345KB",
+      "project": "ray-swan-portfolio",
+      "category": "gallery"
+    }
+  ]
+} 

@@ -1,29 +1,57 @@
-[
-  {
-    "category": "Digital Art",
-    "skills": [
-      { "name": "Generative Art", "level": 82 },
-      { "name": "Digital Painting", "level": 75 },
-      { "name": "3D Modeling", "level": 68 },
-      { "name": "Animation", "level": 60 }
-    ]
-  },
-  {
-    "category": "Development",
-    "skills": [
-      { "name": "JavaScript / React", "level": 90 },
-      { "name": "Python / ML", "level": 78 },
-      { "name": "WebGL / Three.js", "level": 65 },
-      { "name": "D3.js", "level": 60 }
-    ]
-  },
-  {
-    "category": "Design",
-    "skills": [
-      { "name": "Brand Identity", "level": 88 },
-      { "name": "UI/UX", "level": 84 },
-      { "name": "Typography", "level": 70 },
-      { "name": "Color Theory", "level": 85 }
-    ]
-  }
-]
+{
+  "skills": [
+    {
+      "category": "Digital Art",
+      "description": "Creative digital art and design skills",
+      "icon": "🎨",
+      "color": "#FF6B6B",
+      "skills": [
+        { "id": "generative-art", "name": "Generative Art", "level": 82, "description": "Algorithmic and procedural art creation" },
+        { "id": "digital-painting", "name": "Digital Painting", "level": 75, "description": "Digital illustration and painting techniques" },
+        { "id": "3d-modeling", "name": "3D Modeling", "level": 68, "description": "3D design and modeling software" },
+        { "id": "animation", "name": "Animation", "level": 60, "description": "Motion graphics and animation" }
+      ]
+    },
+    {
+      "category": "Development",
+      "description": "Programming and development technologies",
+      "icon": "💻",
+      "color": "#4ECDC4",
+      "skills": [
+        { "id": "javascript", "name": "JavaScript", "level": 90, "description": "Core JavaScript and ES6+ features" },
+        { "id": "react", "name": "React", "level": 88, "description": "React.js library and ecosystem" },
+        { "id": "python", "name": "Python", "level": 78, "description": "Python programming and ML libraries" },
+        { "id": "html5", "name": "HTML5", "level": 95, "description": "Semantic HTML and modern markup" },
+        { "id": "css", "name": "CSS", "level": 92, "description": "CSS3, animations, and responsive design" },
+        { "id": "nodejs", "name": "Node.js", "level": 85, "description": "Server-side JavaScript runtime" },
+        { "id": "express", "name": "Express", "level": 80, "description": "Node.js web application framework" },
+        { "id": "fastapi", "name": "FastAPI", "level": 75, "description": "Python web framework for APIs" },
+        { "id": "postgresql", "name": "PostgreSQL", "level": 70, "description": "Relational database management" },
+        { "id": "redis", "name": "Redis", "level": 65, "description": "In-memory data structure store" },
+        { "id": "docker", "name": "Docker", "level": 72, "description": "Containerization and deployment" },
+        { "id": "vite", "name": "Vite", "level": 85, "description": "Modern frontend build tool" },
+        { "id": "typescript", "name": "TypeScript", "level": 82, "description": "Typed JavaScript superset" },
+        { "id": "tailwindcss", "name": "TailwindCSS", "level": 88, "description": "Utility-first CSS framework" },
+        { "id": "webgl", "name": "WebGL", "level": 65, "description": "3D graphics programming" },
+        { "id": "threejs", "name": "Three.js", "level": 68, "description": "3D JavaScript library" },
+        { "id": "d3js", "name": "D3.js", "level": 60, "description": "Data visualization library" },
+        { "id": "canvas", "name": "Canvas API", "level": 75, "description": "HTML5 Canvas graphics" },
+        { "id": "service-workers", "name": "Service Workers", "level": 70, "description": "PWA and offline functionality" },
+        { "id": "openai", "name": "OpenAI API", "level": 80, "description": "AI and language model integration" },
+        { "id": "crewai", "name": "CrewAI", "level": 75, "description": "Multi-agent AI orchestration" }
+      ]
+    },
+    {
+      "category": "Design",
+      "description": "UI/UX and design skills",
+      "icon": "🎯",
+      "color": "#96CEB4",
+      "skills": [
+        { "id": "brand-identity", "name": "Brand Identity", "level": 88, "description": "Brand strategy and visual identity" },
+        { "id": "ui-ux", "name": "UI/UX", "level": 84, "description": "User interface and experience design" },
+        { "id": "typography", "name": "Typography", "level": 70, "description": "Type design and font selection" },
+        { "id": "color-theory", "name": "Color Theory", "level": 85, "description": "Color psychology and palettes" }
+      ]
+    }
+  ]
+}

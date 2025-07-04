@@ -1,0 +1,185 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Projects Schema",
+  "description": "Schema for portfolio projects with normalized relationships",
+  "type": "object",
+  "properties": {
+    "projects": {
+      "type": "array",
+      "description": "Array of project definitions",
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "slug", "subtitle", "description", "year"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique project identifier",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "title": {
+            "type": "string",
+            "description": "Project title",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "slug": {
+            "type": "string",
+            "description": "URL-friendly project identifier",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "subtitle": {
+            "type": "string",
+            "description": "Project subtitle or tagline",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "description": {
+            "type": "string",
+            "description": "Project description",
+            "minLength": 10,
+            "maxLength": 1000
+          },
+          "year": {
+            "type": "integer",
+            "description": "Project year",
+            "minimum": 2000,
+            "maximum": 2030
+          },
+          "typeIds": {
+            "type": "array",
+            "description": "Array of project type IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "minItems": 1,
+            "maxItems": 5
+          },
+          "toolIds": {
+            "type": "array",
+            "description": "Array of tool/technology IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "tagIds": {
+            "type": "array",
+            "description": "Array of tag IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "minItems": 1,
+            "maxItems": 10
+          },
+          "mediaIds": {
+            "type": "array",
+            "description": "Array of media asset IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "minItems": 1,
+            "maxItems": 20
+          },
+          "linkIds": {
+            "type": "array",
+            "description": "Array of link IDs",
+            "items": {
+              "type": "string",
+              "pattern": "^[a-z0-9-]+$"
+            },
+            "maxItems": 10
+          },
+          "highlight": {
+            "type": "boolean",
+            "description": "Whether project is highlighted",
+            "default": false
+          },
+          "emotion": {
+            "type": "string",
+            "description": "Emotional descriptor for the project",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "status": {
+            "type": "string",
+            "description": "Project status",
+            "enum": ["completed", "in-progress", "planned", "archived"]
+          },
+          "difficulty": {
+            "type": "string",
+            "description": "Project difficulty level",
+            "enum": ["beginner", "intermediate", "advanced", "expert"]
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Additional project metadata",
+            "properties": {
+              "startDate": {
+                "type": "string",
+                "description": "Project start date",
+                "format": "date"
+              },
+              "endDate": {
+                "type": "string",
+                "description": "Project end date",
+                "format": "date"
+              },
+              "client": {
+                "type": "string",
+                "description": "Client name if applicable"
+              },
+              "team": {
+                "type": "array",
+                "description": "Team members",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "budget": {
+                "type": "string",
+                "description": "Project budget"
+              },
+              "awards": {
+                "type": "array",
+                "description": "Awards or recognition",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "metrics": {
+                "type": "object",
+                "description": "Project metrics",
+                "properties": {
+                  "users": {
+                    "type": "integer",
+                    "description": "Number of users"
+                  },
+                  "downloads": {
+                    "type": "integer",
+                    "description": "Number of downloads"
+                  },
+                  "revenue": {
+                    "type": "number",
+                    "description": "Revenue generated"
+                  },
+                  "performance": {
+                    "type": "number",
+                    "description": "Performance score"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 100
+    }
+  },
+  "required": ["projects"]
+} 
