@@ -10,6 +10,8 @@ import PortfolioPage from './components/PortfolioPage';
 import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
+import DataManager from './components/DataManager';
+import CarouselDemo from './components/CarouselDemo';
 
 // Context
 import { ThemeProvider } from './context/ThemeContext';
@@ -36,7 +38,7 @@ function App() {
   return (
     <ThemeProvider>
       <FilterProvider>
-        <Router>
+        <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <div className="App">
             <Header />
             <main>
@@ -70,6 +72,16 @@ function App() {
                   <Route path="/contact" element={
                     <PageTransition>
                       <ContactPage />
+                    </PageTransition>
+                  } />
+                  <Route path="/admin/data" element={
+                    <PageTransition>
+                      <DataManager />
+                    </PageTransition>
+                  } />
+                  <Route path="/demo/carousel" element={
+                    <PageTransition>
+                      <CarouselDemo />
                     </PageTransition>
                   } />
                 </Routes>

@@ -10,8 +10,8 @@ export const useTheme = () => {
   return context;
 };
 
-export const ThemeProvider = ({ children, initialValue }) => {
-  const [currentTheme, setCurrentTheme] = useState(initialValue?.currentTheme || 'default');
+export const ThemeProvider = ({ children, initialTheme }) => {
+  const [currentTheme, setCurrentTheme] = useState(initialTheme?.currentTheme || 'default');
 
   // Apply theme to document
   useEffect(() => {
@@ -26,14 +26,14 @@ export const ThemeProvider = ({ children, initialValue }) => {
     setCurrentTheme('default');
   };
 
-  const value = {
+  const contextValue = {
     currentTheme,
     changeTheme,
     resetTheme
   };
 
   return (
-    <ThemeContext.Provider value={value}>
+    <ThemeContext.Provider value={contextValue}>
       {children}
     </ThemeContext.Provider>
   );

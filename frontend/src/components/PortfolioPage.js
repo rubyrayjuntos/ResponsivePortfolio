@@ -3,11 +3,12 @@ import { useParams } from 'react-router-dom';
 import { useFilter } from '../context/FilterContext';
 import FilterSidebar from './FilterSidebar';
 import ProjectCard from './ProjectCard';
+import ProjectCarousel from './ProjectCarousel';
 
 const PortfolioPage = () => {
   const { category } = useParams();
   const { filteredProjects, updateFilter, clearFilters } = useFilter();
-  const [layout, setLayout] = useState('grid'); // 'grid' or 'masonry'
+  const [layout, setLayout] = useState('grid'); // 'grid', 'masonry', or 'carousel'
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   // Set initial filter based on URL category
@@ -54,30 +55,40 @@ const PortfolioPage = () => {
           </p>
         </div>
 
-        <div style={{ display: 'flex', gap: 'var(--spacing-md)', alignItems: 'center' }}>
-          {/* Layout Toggle */}
-          <div style={{ display: 'flex', gap: 'var(--spacing-xs)' }}>
-            <button 
-              className={`btn btn-pill ${layout === 'grid' ? 'neumorphic-inset' : ''}`}
-              onClick={() => setLayout('grid')}
-              style={{ 
-                padding: 'var(--spacing-sm)',
-                fontSize: '0.9rem'
-              }}
-            >
-              Grid
-            </button>
-            <button 
-              className={`btn btn-pill ${layout === 'masonry' ? 'neumorphic-inset' : ''}`}
-              onClick={() => setLayout('masonry')}
-              style={{ 
-                padding: 'var(--spacing-sm)',
-                fontSize: '0.9rem'
-              }}
-            >
-              Masonry
-            </button>
-          </div>
+                  <div style={{ display: 'flex', gap: 'var(--spacing-md)', alignItems: 'center' }}>
+            {/* Layout Toggle */}
+            <div style={{ display: 'flex', gap: 'var(--spacing-xs)' }}>
+              <button 
+                className={`btn btn-pill ${layout === 'grid' ? 'neumorphic-inset' : ''}`}
+                onClick={() => setLayout('grid')}
+                style={{ 
+                  padding: 'var(--spacing-sm)',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Grid
+              </button>
+              <button 
+                className={`btn btn-pill ${layout === 'masonry' ? 'neumorphic-inset' : ''}`}
+                onClick={() => setLayout('masonry')}
+                style={{ 
+                  padding: 'var(--spacing-sm)',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Masonry
+              </button>
+              <button 
+                className={`btn btn-pill ${layout === 'carousel' ? 'neumorphic-inset' : ''}`}
+                onClick={() => setLayout('carousel')}
+                style={{ 
+                  padding: 'var(--spacing-sm)',
+                  fontSize: '0.9rem'
+                }}
+              >
+                Carousel
+              </button>
+            </div>
 
           {/* Mobile Filter Toggle */}
           <button 
@@ -152,7 +163,7 @@ const PortfolioPage = () => {
           </div>
         )}
 
-        {/* Projects Grid */}
+        {/* Projects Display */}
         <main style={{ flex: '1' }}>
           {filteredProjects.length === 0 ? (
             <div className="neumorphic-raised" style={{ 
@@ -172,6 +183,12 @@ const PortfolioPage = () => {
                 Clear Filters
               </button>
             </div>
+          ) : layout === 'carousel' ? (
+            <ProjectCarousel 
+              maxProjects={filteredProjects.length}
+              autoPlay={true}
+              autoPlayInterval={5000}
+            />
           ) : (
             <div className={layout === 'masonry' ? 'masonry' : 'grid'} style={{
               gridTemplateColumns: layout === 'grid' ? 'repeat(auto-fill, minmax(300px, 1fr))' : undefined
@@ -184,14 +201,14 @@ const PortfolioPage = () => {
         </main>
       </div>
 
-      {/* Responsive Design */}
-      <style jsx>{`
+      {/* Responsive Design - Using CSS-in-JS instead of jsx attribute */}
+      <style>{`
         @media (max-width: 1024px) {
-          aside {
+          .container aside {
             display: none;
           }
           
-          button[onClick="${toggleSidebar}"] {
+          .container button[onClick*="toggleSidebar"] {
             display: block !important;
           }
         }

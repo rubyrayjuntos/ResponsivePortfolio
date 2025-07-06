@@ -25,8 +25,8 @@
     },
     "avatar": {
       "type": "string",
-      "description": "Profile image URL",
-      "format": "uri"
+      "description": "Profile image URL (can be relative path for local images or full URI for external)",
+      "pattern": "^(https?:\\/\\/|\\/|data:image\\/)"
     },
     "contact": {
       "type": "object",

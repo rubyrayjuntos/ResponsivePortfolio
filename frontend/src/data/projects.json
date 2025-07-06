@@ -7,11 +7,33 @@
       "subtitle": "A modern-retro arcade rebirth in your pocket",
       "description": "AstroNova is a Progressive Web App (PWA) reimagining the classic Asteroids game. Designed for instant, offline play with crisp visuals and responsive touch controls, it balances nostalgia with modern polish—earning praise for its addictive gameplay, stylish neon aesthetic, and flawless mobile experience.",
       "year": 2025,
-      "typeIds": ["game-design", "frontend-development", "pwa"],
-      "toolIds": ["html5", "canvas", "javascript", "css", "service-workers"],
-      "tagIds": ["mobile", "arcade", "offline-first", "retro", "pwa"],
-      "mediaIds": ["astronova-thumb", "astronova-gallery-1"],
-      "linkIds": ["astronova-demo", "astronova-github"],
+      "typeIds": [
+        "game-design",
+        "frontend-development",
+        "pwa"
+      ],
+      "toolIds": [
+        "html5",
+        "canvas",
+        "javascript",
+        "css",
+        "service-workers"
+      ],
+      "tagIds": [
+        "mobile",
+        "arcade",
+        "offline-first",
+        "retro",
+        "pwa"
+      ],
+      "mediaIds": [
+        "astronova-thumb",
+        "astronova-gallery-1"
+      ],
+      "linkIds": [
+        "astronova-demo",
+        "astronova-github"
+      ],
       "highlight": true,
       "emotion": "electrified nostalgia",
       "status": "completed",
@@ -24,11 +46,34 @@
       "subtitle": "Interactive Tarot Powered by Papi Chispa 🔮",
       "description": "A real-time, bilingual tarot reading experience led by Papi Chispa, your velvet-voiced digital mystic. Built with React, Tailwind, and FastAPI, this app offers dramatic card flips, live poetic chat, and themed UI settings ranging from cyberpunk to ceremonial gold.",
       "year": 2025,
-      "typeIds": ["creative-technology", "conversational-ai", "frontend-development"],
-      "toolIds": ["react", "vite", "typescript", "tailwindcss", "fastapi", "openai"],
-      "tagIds": ["tarot", "ai", "interactive", "spanglish", "generative"],
-      "mediaIds": ["cartas-thumb", "cartas-gallery-1"],
-      "linkIds": ["cartas-demo", "cartas-github"],
+      "typeIds": [
+        "creative-technology",
+        "conversational-ai",
+        "frontend-development"
+      ],
+      "toolIds": [
+        "react",
+        "vite",
+        "typescript",
+        "tailwindcss",
+        "fastapi",
+        "openai"
+      ],
+      "tagIds": [
+        "tarot",
+        "ai",
+        "interactive",
+        "spanglish",
+        "generative"
+      ],
+      "mediaIds": [
+        "cartas-thumb",
+        "cartas-gallery-1"
+      ],
+      "linkIds": [
+        "cartas-demo",
+        "cartas-github"
+      ],
       "highlight": true,
       "emotion": "sacred seduction",
       "status": "completed",
@@ -41,11 +86,37 @@
       "subtitle": "Where words become worlds, and storytellers become gods.",
       "description": "A collaborative storycrafting platform built around sacred roles, AI agents, and real-time cosmic creation. NOVA is part atelier, part oracle—powered by FastAPI, React, CrewAI, and OpenAI. This isn't just software, it's a conspiracy of creators across space and soul.",
       "year": 2025,
-      "typeIds": ["creative-technology", "ai-collaboration", "platform-design"],
-      "toolIds": ["react", "fastapi", "openai", "crewai", "postgresql", "redis", "tailwindcss", "docker"],
-      "tagIds": ["ai", "writing", "collaborative", "multi-agent", "creative-tools", "studio"],
-      "mediaIds": ["nova-thumb", "nova-gallery-1"],
-      "linkIds": ["nova-demo", "nova-github"],
+      "typeIds": [
+        "creative-technology",
+        "ai-collaboration",
+        "platform-design"
+      ],
+      "toolIds": [
+        "react",
+        "fastapi",
+        "openai",
+        "crewai",
+        "postgresql",
+        "redis",
+        "tailwindcss",
+        "docker"
+      ],
+      "tagIds": [
+        "ai",
+        "writing",
+        "collaborative",
+        "multi-agent",
+        "creative-tools",
+        "studio"
+      ],
+      "mediaIds": [
+        "nova-thumb",
+        "nova-gallery-1"
+      ],
+      "linkIds": [
+        "nova-demo",
+        "nova-github"
+      ],
       "highlight": true,
       "emotion": "divine co-creation",
       "status": "in-progress",
@@ -58,11 +129,34 @@
       "subtitle": "Automated brand creation powered by AI agents & HTML magic",
       "description": "A dual-mode branding system: a no-install HTML interface for instant identity generation and an advanced multi-agent CrewAI workflow for scalable brand strategy. Generate brand voice, color palettes, typography, logo directions, and more—all powered by OpenAI and orchestrated like a marketing séance.",
       "year": 2025,
-      "typeIds": ["ai-workflow", "creative-tools", "branding-system"],
-      "toolIds": ["html5", "javascript", "python", "fastapi", "openai", "crewai"],
-      "tagIds": ["branding", "identity", "automation", "creative-tools", "multi-agent"],
-      "mediaIds": ["brand-thumb", "brand-gallery-1"],
-      "linkIds": ["brand-demo", "brand-github"],
+      "typeIds": [
+        "ai-workflow",
+        "creative-tools",
+        "branding-system"
+      ],
+      "toolIds": [
+        "html5",
+        "javascript",
+        "python",
+        "fastapi",
+        "openai",
+        "crewai"
+      ],
+      "tagIds": [
+        "branding",
+        "identity",
+        "automation",
+        "creative-tools",
+        "multi-agent"
+      ],
+      "mediaIds": [
+        "brand-thumb",
+        "brand-gallery-1"
+      ],
+      "linkIds": [
+        "brand-demo",
+        "brand-github"
+      ],
       "highlight": true,
       "emotion": "empowered clarity",
       "status": "completed",
@@ -75,13 +169,69 @@
       "subtitle": "A blazing altar of code, creativity, and cosmic elegance",
       "description": "A fully custom, secure, and high-performance personal portfolio showcasing digital art, creative code, and writing. Featuring an AI assistant, dark/light theming, offline PWA support, a secure admin panel, and interactive content—all built with vanilla JavaScript and Node.js.",
       "year": 2025,
-      "typeIds": ["portfolio", "full-stack-app", "personal-brand"],
-      "toolIds": ["javascript", "nodejs", "express", "html5", "css", "service-workers"],
-      "tagIds": ["pwa", "ai", "portfolio", "secure", "responsive", "accessibility"],
-      "mediaIds": ["portfolio-thumb", "portfolio-gallery-1", "portfolio-gallery-2"],
-      "linkIds": ["portfolio-demo", "portfolio-github"],
+      "typeIds": [
+        "portfolio",
+        "full-stack-app",
+        "personal-brand"
+      ],
+      "toolIds": [
+        "javascript",
+        "nodejs",
+        "express",
+        "html5",
+        "css",
+        "service-workers"
+      ],
+      "tagIds": [
+        "pwa",
+        "ai",
+        "portfolio",
+        "secure",
+        "responsive",
+        "accessibility"
+      ],
+      "mediaIds": [
+        "portfolio-thumb",
+        "portfolio-gallery-1",
+        "portfolio-gallery-2"
+      ],
+      "linkIds": [
+        "portfolio-demo",
+        "portfolio-github"
+      ],
       "highlight": true,
       "emotion": "cosmic elegance",
+      "status": "completed",
+      "difficulty": "intermediate"
+    },
+    {
+      "id": "tarot-moderno",
+      "title": "Tarot Moderno",
+      "slug": "tarot-moderno",
+      "subtitle": "A modern take on the tarot",
+      "description": "soft and hard ",
+      "year": 2024,
+      "typeIds": [
+        "creative-technology"
+      ],
+      "toolIds": [
+        "3d-modeling",
+        "animation",
+        "javascript",
+        "react",
+        "python"
+      ],
+      "tagIds": [
+        "playful",
+        "mobile",
+        "arcade",
+        "offline-first",
+        "retro"
+      ],
+      "mediaIds": [],
+      "linkIds": [],
+      "highlight": false,
+      "emotion": "electrified emotion",
       "status": "completed",
       "difficulty": "intermediate"
     }

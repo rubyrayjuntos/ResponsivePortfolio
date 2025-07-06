@@ -3,7 +3,7 @@
     {
       "id": "astronova-thumb",
       "filename": "image-1751275271504-412693276.jpg",
-      "path": "/uploads/",
+      "path": "/assets/images/astronova-asteroids/",
       "description": "AstroNova game screenshot showing the mobile interface",
       "alt": "Mobile asteroids game interface with neon graphics",
       "dimensions": {
@@ -19,7 +19,7 @@
     {
       "id": "astronova-gallery-1",
       "filename": "image-1751275271523-896378493.jpg",
-      "path": "/uploads/",
+      "path": "/assets/images/astronova-asteroids/",
       "description": "AstroNova gameplay screenshot",
       "alt": "Asteroids game in action with particle effects",
       "dimensions": {
@@ -35,7 +35,7 @@
     {
       "id": "cartas-thumb",
       "filename": "image-1751272273801-818786439.png",
-      "path": "/uploads/",
+      "path": "/assets/images/cartas-del-deseo/",
       "description": "Cartas del Deseo tarot interface",
       "alt": "Tarot card reading interface with mystical design",
       "dimensions": {
@@ -51,7 +51,7 @@
     {
       "id": "cartas-gallery-1",
       "filename": "image-1751275652851-408588635.jpg",
-      "path": "/uploads/",
+      "path": "/assets/images/cartas-del-deseo/",
       "description": "Cartas del Deseo reading session",
       "alt": "Tarot reading in progress with animated cards",
       "dimensions": {
@@ -67,7 +67,7 @@
     {
       "id": "nova-thumb",
       "filename": "image-1751348320898-1997273.png",
-      "path": "/uploads/",
+      "path": "/assets/images/nova-writers-conspiracy/",
       "description": "NOVA Writers Conspiracy dashboard",
       "alt": "Collaborative writing platform interface",
       "dimensions": {
@@ -83,7 +83,7 @@
     {
       "id": "nova-gallery-1",
       "filename": "image-1751348320969-368017186.png",
-      "path": "/uploads/",
+      "path": "/assets/images/nova-writers-conspiracy/",
       "description": "NOVA AI agents interface",
       "alt": "AI writing assistants and collaboration tools",
       "dimensions": {
@@ -99,7 +99,7 @@
     {
       "id": "brand-thumb",
       "filename": "image-1751272273801-818786439.png",
-      "path": "/uploads/",
+      "path": "/assets/images/brand-identity-workflow/",
       "description": "Brand Identity Workflow interface",
       "alt": "AI-powered brand generation interface",
       "dimensions": {
@@ -115,7 +115,7 @@
     {
       "id": "brand-gallery-1",
       "filename": "image-1751276238436-162990766.jpg",
-      "path": "/uploads/",
+      "path": "/assets/images/brand-identity-workflow/",
       "description": "Brand workflow automation process",
       "alt": "Multi-agent brand creation workflow",
       "dimensions": {
@@ -131,7 +131,7 @@
     {
       "id": "portfolio-thumb",
       "filename": "image-1751272479804-311588878.png",
-      "path": "/uploads/",
+      "path": "/assets/images/ray-swan-portfolio/",
       "description": "Ray Swan Portfolio homepage",
       "alt": "Personal portfolio website with neumorphic design",
       "dimensions": {
@@ -147,7 +147,7 @@
     {
       "id": "portfolio-gallery-1",
       "filename": "image-1751272482308-370740828.png",
-      "path": "/uploads/",
+      "path": "/assets/images/ray-swan-portfolio/",
       "description": "Portfolio project showcase",
       "alt": "Interactive project gallery with animations",
       "dimensions": {
@@ -163,7 +163,7 @@
     {
       "id": "portfolio-gallery-2",
       "filename": "image-1751272485244-258038440.png",
-      "path": "/uploads/",
+      "path": "/assets/images/ray-swan-portfolio/",
       "description": "Portfolio responsive design",
       "alt": "Mobile and tablet responsive layouts",
       "dimensions": {
@@ -175,6 +175,182 @@
       "size": "345KB",
       "project": "ray-swan-portfolio",
       "category": "gallery"
+    },
+    {
+      "id": "media-1751839341972-0",
+      "filename": "image-1751038778441-774109876.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751038778441-774109876.webp",
+      "alt": "image-1751038778441-774109876.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "262KB",
+      "project": "",
+      "category": "thumbnail"
+    },
+    {
+      "id": "media-1751839342686-1",
+      "filename": "image-1751038778476-357842403.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751038778476-357842403.webp",
+      "alt": "image-1751038778476-357842403.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "225KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839343371-2",
+      "filename": "image-1751038778488-412642831.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751038778488-412642831.webp",
+      "alt": "image-1751038778488-412642831.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "198KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839344054-3",
+      "filename": "image-1751038778491-895454268.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751038778491-895454268.webp",
+      "alt": "image-1751038778491-895454268.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "265KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839344755-4",
+      "filename": "image-1751044050029-193046062.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751044050029-193046062.webp",
+      "alt": "image-1751044050029-193046062.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "209KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839345439-5",
+      "filename": "image-1751044050029-230916373.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751044050029-230916373.webp",
+      "alt": "image-1751044050029-230916373.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "220KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839346119-6",
+      "filename": "image-1751044050030-458648850.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751044050030-458648850.webp",
+      "alt": "image-1751044050030-458648850.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "198KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839346787-7",
+      "filename": "image-1751044050030-646433610.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751044050030-646433610.webp",
+      "alt": "image-1751044050030-646433610.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "234KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839347475-8",
+      "filename": "image-1751044050030-722723329.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751044050030-722723329.webp",
+      "alt": "image-1751044050030-722723329.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "249KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839348181-9",
+      "filename": "image-1751044050030-996516965.webp",
+      "path": "/src/assets/images//",
+      "description": "image-1751044050030-996516965.webp",
+      "alt": "image-1751044050030-996516965.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "230KB",
+      "project": "",
+      "category": "gallery"
+    },
+    {
+      "id": "media-1751839348879-10",
+      "filename": "image-1751044050059-298724638.webp",
+      "path": "/assets/images/tarot-moderno/",
+      "description": "image-1751044050059-298724638.webp",
+      "alt": "image-1751044050059-298724638.webp",
+      "dimensions": {
+        "width": 800,
+        "height": 600
+      },
+      "type": "image",
+      "format": "webp",
+      "size": "194KB",
+      "project": "tarot-moderno",
+      "category": "gallery"
     }
   ]
-} 
+}

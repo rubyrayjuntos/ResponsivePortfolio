@@ -1,13 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { getProjectThumbnail } from '../utils/imageUtils';
 
 const ProjectCard = ({ project, layout, index = 0 }) => {
   const isMasonry = layout === 'masonry';
 
-  // Get thumbnail from resolved media
-  const thumbnail = project.media?.thumbnail || 
-                   (project.media && project.media.length > 0 ? project.media[0]?.path + project.media[0]?.filename : '');
+  // Get thumbnail using the new utility function
+  const thumbnail = getProjectThumbnail(project);
 
   // Animation variants
   const cardVariants = {
@@ -83,16 +83,31 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
           style={{
             width: '100%',
             height: isMasonry ? '200px' : '200px',
-            backgroundImage: `url(${thumbnail})`,
+            backgroundImage: thumbnail ? `url(${thumbnail})` : 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             borderTopLeftRadius: 'var(--radius-md)',
             borderTopRightRadius: 'var(--radius-md)',
             position: 'relative',
-            overflow: 'hidden'
+            overflow: 'hidden',
+            backgroundColor: thumbnail ? 'transparent' : 'var(--bg-secondary)'
           }}
           variants={imageVariants}
         >
+          {/* No Image Placeholder */}
+          {!thumbnail && (
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '100%',
+              color: 'var(--text-secondary)',
+              fontSize: '3rem'
+            }}>
+              🖼️
+            </div>
+          )}
+
           {/* Highlight Badge */}
           {project.highlight && (
             <motion.div 
@@ -138,23 +153,25 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
           )}
 
           {/* Year Badge */}
-          <motion.div 
-            style={{
-              position: 'absolute',
-              bottom: 'var(--spacing-sm)',
-              right: 'var(--spacing-sm)',
-              backgroundColor: 'rgba(0, 0, 0, 0.7)',
-              color: 'white',
-              padding: 'var(--spacing-xs) var(--spacing-sm)',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '0.8rem'
-            }}
-            variants={badgeVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {project.year}
-          </motion.div>
+          {project.year && (
+            <motion.div 
+              style={{
+                position: 'absolute',
+                bottom: 'var(--spacing-sm)',
+                right: 'var(--spacing-sm)',
+                backgroundColor: 'rgba(0, 0, 0, 0.7)',
+                color: 'white',
+                padding: 'var(--spacing-xs) var(--spacing-sm)',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.8rem'
+              }}
+              variants={badgeVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {project.year}
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Project Content */}
@@ -205,123 +222,40 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
             </p>
           )}
 
-          {/* Project Types */}
-          <motion.div 
-            style={{ 
-              display: 'flex', 
-              flexWrap: 'wrap', 
-              gap: 'var(--spacing-xs)',
-              marginBottom: 'var(--spacing-md)'
-            }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-          >
-            {project.types.slice(0, 2).map((type, typeIndex) => (
-              <motion.span 
-                key={type.id} 
+          {/* Tags */}
+          <div style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: 'var(--spacing-xs)',
+            marginTop: 'auto'
+          }}>
+            {project.tags?.slice(0, 3).map(tag => (
+              <span
+                key={tag.id}
                 style={{
-                  backgroundColor: type.color || 'var(--bg-secondary)',
+                  backgroundColor: tag.color || 'var(--accent-secondary)',
                   color: 'white',
                   padding: 'var(--spacing-xs) var(--spacing-sm)',
                   borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.8rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--spacing-xs)'
+                  fontSize: '0.7rem',
+                  fontWeight: 'bold'
                 }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.4 + typeIndex * 0.1 }}
               >
-                {type.icon && <span>{type.icon}</span>}
-                {type.label}
-              </motion.span>
+                {tag.icon} {tag.label}
+              </span>
             ))}
-          </motion.div>
-
-          {/* Project Tags */}
-          <motion.div 
-            style={{ 
-              display: 'flex', 
-              flexWrap: 'wrap', 
-              gap: 'var(--spacing-xs)',
-              marginBottom: 'var(--spacing-md)'
-            }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.3 }}
-          >
-            {project.tags.slice(0, 3).map((tag, tagIndex) => (
-              <motion.span 
-                key={tag.id} 
-                style={{
-                  backgroundColor: 'var(--bg-secondary)',
-                  color: 'var(--text-secondary)',
-                  padding: 'var(--spacing-xs) var(--spacing-sm)',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.8rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 'var(--spacing-xs)'
-                }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.5 + tagIndex * 0.1 }}
-              >
-                {tag.icon && <span>{tag.icon}</span>}
-                {tag.label}
-              </motion.span>
-            ))}
-          </motion.div>
-
-          {/* Tools & Technologies */}
-          <motion.div 
-            style={{ 
-              display: 'flex', 
-              flexWrap: 'wrap', 
-              gap: 'var(--spacing-xs)',
-              marginTop: 'auto'
-            }}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.4 }}
-          >
-            {project.tools.slice(0, 3).map((tool, toolIndex) => (
-              <motion.span 
-                key={tool.id} 
-                style={{
-                  backgroundColor: 'var(--accent-secondary)',
-                  color: 'var(--bg-primary)',
-                  padding: 'var(--spacing-xs) var(--spacing-sm)',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.8rem',
-                  fontWeight: '500'
-                }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.6 + toolIndex * 0.1 }}
-              >
-                {tool.name}
-              </motion.span>
-            ))}
-            {project.tools.length > 3 && (
-              <motion.span 
-                style={{
-                  backgroundColor: 'var(--text-secondary)',
-                  color: 'var(--bg-primary)',
-                  padding: 'var(--spacing-xs) var(--spacing-sm)',
-                  borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.8rem'
-                }}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.3, delay: 0.9 }}
-              >
-                +{project.tools.length - 3} more
-              </motion.span>
+            {project.tags?.length > 3 && (
+              <span style={{
+                backgroundColor: 'var(--bg-secondary)',
+                color: 'var(--text-secondary)',
+                padding: 'var(--spacing-xs) var(--spacing-sm)',
+                borderRadius: 'var(--radius-sm)',
+                fontSize: '0.7rem'
+              }}>
+                +{project.tags.length - 3} more
+              </span>
             )}
-          </motion.div>
+          </div>
         </motion.div>
       </Link>
     </motion.div>

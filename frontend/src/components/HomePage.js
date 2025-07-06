@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getAllProjects } from '../utils/dataResolver';
+import { getProjectThumbnail } from '../utils/imageUtils';
 import aboutData from '../data/about.json';
 
 const HomePage = () => {
@@ -283,9 +284,7 @@ const HomePage = () => {
                 width: '400px',
                 height: '300px',
                 margin: '0 auto',
-                backgroundImage: `url(${featuredProject.media?.thumbnail || 
-                  (featuredProject.media && featuredProject.media.length > 0 ? 
-                   featuredProject.media[0]?.path + featuredProject.media[0]?.filename : '')})`,
+                backgroundImage: `url(${getProjectThumbnail(featuredProject)})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 borderRadius: 'var(--radius-md)'
@@ -340,9 +339,7 @@ const HomePage = () => {
                 <div style={{
                   width: '100%',
                   height: '150px',
-                  backgroundImage: `url(${project.media?.thumbnail || 
-                    (project.media && project.media.length > 0 ? 
-                     project.media[0]?.path + project.media[0]?.filename : '')})`,
+                  backgroundImage: `url(${getProjectThumbnail(project)})`,
                   backgroundSize: 'cover',
                   backgroundPosition: 'center',
                   borderRadius: 'var(--radius-sm)',
@@ -435,28 +432,34 @@ const HomePage = () => {
           variants={containerVariants}
         >
           <motion.div variants={itemVariants}>
-            <Link 
-              to="/contact"
-              className="btn btn-pill"
-              style={{ textDecoration: 'none' }}
+            <motion.div
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
             >
-              Get in Touch
-            </Link>
+              <Link 
+                to="/contact"
+                className="btn btn-pill"
+                style={{ textDecoration: 'none' }}
+              >
+                Get in Touch
+              </Link>
+            </motion.div>
           </motion.div>
           <motion.div variants={itemVariants}>
-            <Link 
-              to="/about"
-              className="btn btn-pill"
-              style={{ textDecoration: 'none' }}
+            <motion.div
               variants={buttonVariants}
               whileHover="hover"
               whileTap="tap"
             >
-              Learn More
-            </Link>
+              <Link 
+                to="/about"
+                className="btn btn-pill"
+                style={{ textDecoration: 'none' }}
+              >
+                Learn More
+              </Link>
+            </motion.div>
           </motion.div>
         </motion.div>
       </motion.section>
