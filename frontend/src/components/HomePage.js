@@ -63,7 +63,7 @@ const HomePage = () => {
         <motion.h1 
           className="text-embossed" 
           style={{ 
-            fontSize: '3rem', 
+            fontSize: 'clamp(2rem, 6vw, 3rem)', 
             marginBottom: 'var(--spacing-lg)',
             fontFamily: 'var(--font-display)'
           }}
@@ -76,7 +76,7 @@ const HomePage = () => {
         <motion.p 
           className="text-engraved" 
           style={{ 
-            fontSize: '1.5rem', 
+            fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', 
             marginBottom: 'var(--spacing-xl)',
             maxWidth: '600px',
             margin: '0 auto var(--spacing-xl)'
@@ -89,11 +89,12 @@ const HomePage = () => {
         </motion.p>
         <motion.p 
           style={{ 
-            fontSize: '1.1rem', 
+            fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', 
             marginBottom: 'var(--spacing-2xl)',
             maxWidth: '800px',
             margin: '0 auto var(--spacing-2xl)',
-            color: 'var(--text-secondary)'
+            color: 'var(--text-secondary)',
+            lineHeight: 1.6
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -108,7 +109,8 @@ const HomePage = () => {
             display: 'flex', 
             gap: 'var(--spacing-lg)', 
             justifyContent: 'center',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
+            alignItems: 'center'
           }}
           variants={containerVariants}
         >
@@ -126,13 +128,23 @@ const HomePage = () => {
             >
               <Link to="/portfolio" className="btn btn-circular" style={{ textDecoration: 'none' }}>
                 <motion.span 
-                  style={{ fontSize: '1.2rem', fontWeight: 'bold' }}
+                  style={{ 
+                    fontSize: 'clamp(0.8rem, 2.5vw, 1.2rem)', 
+                    fontWeight: 'bold',
+                    textAlign: 'center'
+                  }}
                   whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.2 }}
                 >
                   {item.text}
                 </motion.span>
-                <span style={{ fontSize: '0.8rem', opacity: 0.7 }}>{item.subtitle}</span>
+                <span style={{ 
+                  fontSize: 'clamp(0.6rem, 2vw, 0.8rem)', 
+                  opacity: 0.7,
+                  textAlign: 'center'
+                }}>
+                  {item.subtitle}
+                </span>
               </Link>
             </motion.div>
           ))}
@@ -151,28 +163,33 @@ const HomePage = () => {
           whileHover={{ y: -5 }}
           transition={{ duration: 0.3 }}
         >
-          <div style={{ display: 'flex', gap: 'var(--spacing-2xl)', alignItems: 'center' }}>
+          <div style={{ 
+            display: 'flex', 
+            gap: 'var(--spacing-2xl)', 
+            alignItems: 'center',
+            flexWrap: 'wrap'
+          }}>
             <motion.div 
-              style={{ flex: '1' }}
+              style={{ flex: '1', minWidth: '300px' }}
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h2 className="text-embossed" style={{ 
-                fontSize: '2rem', 
+                fontSize: 'clamp(1.5rem, 4vw, 2rem)', 
                 marginBottom: 'var(--spacing-md)'
               }}>
                 Featured Project
               </h2>
               <h3 style={{ 
-                fontSize: '1.5rem', 
+                fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', 
                 marginBottom: 'var(--spacing-sm)',
                 color: 'var(--accent-primary)'
               }}>
                 {featuredProject.title}
               </h3>
               <p style={{ 
-                fontSize: '1.1rem', 
+                fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)', 
                 marginBottom: 'var(--spacing-md)',
                 color: 'var(--text-secondary)'
               }}>
@@ -180,7 +197,8 @@ const HomePage = () => {
               </p>
               <p style={{ 
                 marginBottom: 'var(--spacing-lg)',
-                lineHeight: 1.6
+                lineHeight: 1.6,
+                fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
               }}>
                 {featuredProject.description}
               </p>
@@ -198,64 +216,25 @@ const HomePage = () => {
                 {featuredProject.types.slice(0, 2).map((type, index) => (
                   <motion.span 
                     key={type.id}
+                    variants={itemVariants}
                     style={{
-                      backgroundColor: type.color || 'var(--accent-primary)',
-                      color: 'white',
+                      backgroundColor: 'var(--accent-primary)',
+                      color: 'var(--bg-primary)',
                       padding: 'var(--spacing-xs) var(--spacing-sm)',
                       borderRadius: 'var(--radius-sm)',
-                      fontSize: '0.8rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--spacing-xs)'
+                      fontSize: 'clamp(0.7rem, 2vw, 0.8rem)',
+                      fontWeight: 'bold'
                     }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.4 + index * 0.1 }}
                   >
-                    {type.icon && <span>{type.icon}</span>}
-                    {type.label}
+                    {type.name}
                   </motion.span>
                 ))}
               </motion.div>
-
-              {/* Project Tags */}
-              <motion.div 
-                style={{ 
-                  display: 'flex', 
-                  gap: 'var(--spacing-sm)', 
-                  flexWrap: 'wrap',
-                  marginBottom: 'var(--spacing-lg)'
-                }}
-                variants={containerVariants}
-              >
-                {featuredProject.tags.slice(0, 3).map((tag, index) => (
-                  <motion.span 
-                    key={tag.id}
-                    style={{
-                      backgroundColor: 'var(--bg-secondary)',
-                      color: 'var(--text-secondary)',
-                      padding: 'var(--spacing-xs) var(--spacing-sm)',
-                      borderRadius: 'var(--radius-sm)',
-                      fontSize: '0.8rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--spacing-xs)'
-                    }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: 0.5 + index * 0.1 }}
-                  >
-                    {tag.icon && <span>{tag.icon}</span>}
-                    {tag.label}
-                  </motion.span>
-                ))}
-              </motion.div>
-
-              <motion.div 
-                style={{ display: 'flex', gap: 'var(--spacing-md)' }}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.6 }}
+              
+              <motion.div
+                whileHover="hover"
+                whileTap="tap"
+                variants={buttonVariants}
               >
                 <Link 
                   to={`/project/${featuredProject.slug}`}
@@ -264,37 +243,51 @@ const HomePage = () => {
                 >
                   View Project
                 </Link>
-                <Link 
-                  to="/portfolio"
-                  className="btn btn-pill"
-                  style={{ textDecoration: 'none' }}
-                >
-                  View All Projects
-                </Link>
               </motion.div>
             </motion.div>
 
+            {/* Featured Project Image */}
             <motion.div 
-              style={{ flex: '1', textAlign: 'center' }}
+              style={{ 
+                flex: '1', 
+                minWidth: '300px',
+                maxWidth: '500px'
+              }}
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
             >
-              <div className="neumorphic-inset" style={{
-                width: '400px',
-                height: '300px',
-                margin: '0 auto',
-                backgroundImage: `url(${getProjectThumbnail(featuredProject)})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                borderRadius: 'var(--radius-md)'
-              }} />
+              {getProjectThumbnail(featuredProject) ? (
+                <div style={{
+                  width: '100%',
+                  height: '300px',
+                  backgroundImage: `url(${getProjectThumbnail(featuredProject)})`,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center',
+                  borderRadius: 'var(--radius-md)',
+                  boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)'
+                }} />
+              ) : (
+                <div style={{
+                  width: '100%',
+                  height: '300px',
+                  backgroundColor: 'var(--bg-secondary)',
+                  borderRadius: 'var(--radius-md)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: 'var(--text-secondary)',
+                  fontSize: '3rem'
+                }}>
+                  🖼️
+                </div>
+              )}
             </motion.div>
           </div>
         </motion.section>
       )}
 
-      {/* Recent Projects */}
+      {/* Quick Stats */}
       <motion.section 
         className="neumorphic-raised" 
         style={{ 
@@ -304,164 +297,93 @@ const HomePage = () => {
         variants={itemVariants}
       >
         <h2 className="text-embossed" style={{ 
-          fontSize: '2rem', 
+          fontSize: 'clamp(1.5rem, 4vw, 2rem)', 
           marginBottom: 'var(--spacing-xl)',
           textAlign: 'center'
         }}>
-          Recent Projects
+          Quick Stats
         </h2>
         
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: 'var(--spacing-lg)'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: 'var(--spacing-xl)'
         }}>
-          {allProjects.slice(0, 3).map((project, index) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 + index * 0.1 }}
-              whileHover={{ y: -5 }}
-            >
-              <Link 
-                to={`/project/${project.slug}`}
-                className="neumorphic-raised" 
-                style={{ 
-                  textDecoration: 'none',
-                  color: 'inherit',
-                  display: 'block',
-                  padding: 'var(--spacing-lg)',
-                  borderRadius: 'var(--radius-md)',
-                  transition: 'all var(--transition-normal)'
-                }}
-              >
-                <div style={{
-                  width: '100%',
-                  height: '150px',
-                  backgroundImage: `url(${getProjectThumbnail(project)})`,
-                  backgroundSize: 'cover',
-                  backgroundPosition: 'center',
-                  borderRadius: 'var(--radius-sm)',
-                  marginBottom: 'var(--spacing-md)'
-                }} />
-                
-                <h3 style={{ 
-                  fontSize: '1.2rem', 
-                  marginBottom: 'var(--spacing-sm)',
-                  color: 'var(--text-primary)'
-                }}>
-                  {project.title}
-                </h3>
-                
-                <p style={{ 
-                  fontSize: '0.9rem',
-                  color: 'var(--text-secondary)',
-                  marginBottom: 'var(--spacing-md)',
-                  lineHeight: 1.4
-                }}>
-                  {project.subtitle}
-                </p>
-
-                <div style={{ 
-                  display: 'flex', 
-                  gap: 'var(--spacing-xs)', 
-                  flexWrap: 'wrap'
-                }}>
-                  {project.types.slice(0, 1).map(type => (
-                    <span key={type.id} style={{
-                      backgroundColor: type.color || 'var(--accent-primary)',
-                      color: 'white',
-                      padding: 'var(--spacing-xs) var(--spacing-sm)',
-                      borderRadius: 'var(--radius-sm)',
-                      fontSize: '0.7rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 'var(--spacing-xs)'
-                    }}>
-                      {type.icon && <span>{type.icon}</span>}
-                      {type.label}
-                    </span>
-                  ))}
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div 
-          style={{ textAlign: 'center', marginTop: 'var(--spacing-xl)' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
-        >
-          <Link 
-            to="/portfolio"
-            className="btn btn-pill"
-            style={{ textDecoration: 'none' }}
+          <motion.div 
+            className="neumorphic-inset" 
+            style={{ 
+              padding: 'var(--spacing-lg)',
+              textAlign: 'center'
+            }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
           >
-            View All Projects
-          </Link>
-        </motion.div>
-      </motion.section>
-
-      {/* Call to Action */}
-      <motion.section 
-        className="neumorphic-raised" 
-        style={{ 
-          padding: 'var(--spacing-2xl)', 
-          textAlign: 'center'
-        }}
-        variants={itemVariants}
-      >
-        <h2 className="text-embossed" style={{ 
-          fontSize: '2rem', 
-          marginBottom: 'var(--spacing-lg)'
-        }}>
-          Ready to Collaborate?
-        </h2>
-        <p style={{ 
-          fontSize: '1.1rem', 
-          marginBottom: 'var(--spacing-xl)',
-          color: 'var(--text-secondary)'
-        }}>
-          Let's create something amazing together.
-        </p>
-        <motion.div 
-          style={{ display: 'flex', gap: 'var(--spacing-md)', justifyContent: 'center', flexWrap: 'wrap' }}
-          variants={containerVariants}
-        >
-          <motion.div variants={itemVariants}>
-            <motion.div
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Link 
-                to="/contact"
-                className="btn btn-pill"
-                style={{ textDecoration: 'none' }}
-              >
-                Get in Touch
-              </Link>
-            </motion.div>
+            <div style={{ 
+              fontSize: 'clamp(2rem, 5vw, 3rem)', 
+              fontWeight: 'bold',
+              color: 'var(--accent-primary)',
+              marginBottom: 'var(--spacing-sm)'
+            }}>
+              {allProjects.length}
+            </div>
+            <div style={{ 
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+              color: 'var(--text-secondary)'
+            }}>
+              Projects Completed
+            </div>
           </motion.div>
-          <motion.div variants={itemVariants}>
-            <motion.div
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Link 
-                to="/about"
-                className="btn btn-pill"
-                style={{ textDecoration: 'none' }}
-              >
-                Learn More
-              </Link>
-            </motion.div>
+          
+          <motion.div 
+            className="neumorphic-inset" 
+            style={{ 
+              padding: 'var(--spacing-lg)',
+              textAlign: 'center'
+            }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div style={{ 
+              fontSize: 'clamp(2rem, 5vw, 3rem)', 
+              fontWeight: 'bold',
+              color: 'var(--accent-primary)',
+              marginBottom: 'var(--spacing-sm)'
+            }}>
+              5+
+            </div>
+            <div style={{ 
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+              color: 'var(--text-secondary)'
+            }}>
+              Years Experience
+            </div>
           </motion.div>
-        </motion.div>
+          
+          <motion.div 
+            className="neumorphic-inset" 
+            style={{ 
+              padding: 'var(--spacing-lg)',
+              textAlign: 'center'
+            }}
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div style={{ 
+              fontSize: 'clamp(2rem, 5vw, 3rem)', 
+              fontWeight: 'bold',
+              color: 'var(--accent-primary)',
+              marginBottom: 'var(--spacing-sm)'
+            }}>
+              3
+            </div>
+            <div style={{ 
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)',
+              color: 'var(--text-secondary)'
+            }}>
+              Creative Disciplines
+            </div>
+          </motion.div>
+        </div>
       </motion.section>
     </motion.div>
   );

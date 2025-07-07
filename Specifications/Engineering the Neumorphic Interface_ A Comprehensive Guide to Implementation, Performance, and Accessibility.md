@@ -2,7 +2,7 @@
 
 ## **Section 1: The Neumorphic Foundation: Core Principles & CSS Techniques**
 
-The visual style presented in the user-provided image is a sophisticated implementation of Neumorphism, or "Soft UI." This design trend occupies a unique space between the hyper-realism of skeuomorphism and the stark simplicity of flat design. Unlike floating elements in styles like Material Design, which cast distinct drop shadows to signify elevation, neumorphic components appear to be extruded directly from the background surface or pressed into it. This creates a soft, tactile, and continuous interface that feels like a single piece of molded material. Achieving this effect in a web interface requires a precise and systematic application of core CSS principles, centered on color, shape, and, most critically, advanced shadow manipulation.
+The visual style presented is a sophisticated implementation of Neumorphism, or "Soft UI." This design trend occupies a unique space between the hyper-realism of skeuomorphism and the stark simplicity of flat design. Unlike floating elements in styles like Material Design, which cast distinct drop shadows to signify elevation, neumorphic components appear to be extruded directly from the background surface or pressed into it. This creates a soft, tactile, and continuous interface that feels like a single piece of molded material. Achieving this effect in a web interface requires a precise and systematic application of core CSS principles, centered on color, shape, and, most critically, advanced shadow manipulation.
 
 ### **1.1 Deconstructing the "Soft UI" Aesthetic: Color, Shape, and Perceived Depth**
 

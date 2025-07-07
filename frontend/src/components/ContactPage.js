@@ -33,14 +33,14 @@ const ContactPage = () => {
         textAlign: 'center'
       }}>
         <h1 className="text-embossed" style={{ 
-          fontSize: '3rem', 
+          fontSize: 'clamp(1.5rem, 4vw, 3rem)', 
           marginBottom: 'var(--spacing-lg)',
           fontFamily: 'var(--font-display)'
         }}>
           Let's Connect
         </h1>
         <p style={{ 
-          fontSize: '1.3rem', 
+          fontSize: 'clamp(1rem, 2.5vw, 1.3rem)', 
           lineHeight: 1.7,
           maxWidth: '600px',
           margin: '0 auto',
@@ -50,11 +50,15 @@ const ContactPage = () => {
         </p>
       </section>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--spacing-2xl)' }}>
+      <div style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+        gap: 'var(--spacing-2xl)' 
+      }}>
         {/* Contact Form */}
         <section className="neumorphic-raised" style={{ padding: 'var(--spacing-2xl)' }}>
           <h2 className="text-embossed" style={{ 
-            fontSize: '2rem', 
+            fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
             marginBottom: 'var(--spacing-xl)'
           }}>
             Send a Message
@@ -147,7 +151,7 @@ const ContactPage = () => {
         {/* Contact Info */}
         <section className="neumorphic-raised" style={{ padding: 'var(--spacing-2xl)' }}>
           <h2 className="text-embossed" style={{ 
-            fontSize: '2rem', 
+            fontSize: 'clamp(1.5rem, 3vw, 2rem)', 
             marginBottom: 'var(--spacing-xl)'
           }}>
             Get in Touch
@@ -168,7 +172,8 @@ const ContactPage = () => {
                 style={{ 
                   color: 'var(--text-primary)',
                   textDecoration: 'none',
-                  fontSize: '1.1rem'
+                  fontSize: '1.1rem',
+                  wordBreak: 'break-word'
                 }}
               >
                 {aboutData.contact.email}
@@ -199,6 +204,7 @@ const ContactPage = () => {
                   <span style={{ marginRight: 'var(--spacing-sm)' }}>🐙</span>
                   GitHub
                 </a>
+                
                 <a 
                   href={aboutData.contact.social.linkedin}
                   target="_blank"
@@ -213,6 +219,7 @@ const ContactPage = () => {
                   <span style={{ marginRight: 'var(--spacing-sm)' }}>💼</span>
                   LinkedIn
                 </a>
+                
                 <a 
                   href={aboutData.contact.social.twitter}
                   target="_blank"
@@ -230,6 +237,23 @@ const ContactPage = () => {
               </div>
             </div>
 
+            {/* Location */}
+            <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
+              <h3 style={{ 
+                fontSize: '1.2rem', 
+                marginBottom: 'var(--spacing-md)',
+                color: 'var(--accent-primary)'
+              }}>
+                📍 Location
+              </h3>
+              <p style={{ 
+                fontSize: '1.1rem',
+                lineHeight: 1.5
+              }}>
+                {aboutData.contact.location}
+              </p>
+            </div>
+
             {/* Availability */}
             <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
               <h3 style={{ 
@@ -237,27 +261,13 @@ const ContactPage = () => {
                 marginBottom: 'var(--spacing-md)',
                 color: 'var(--accent-primary)'
               }}>
-                📅 Availability
+                ⏰ Availability
               </h3>
               <p style={{ 
                 fontSize: '1.1rem',
-                color: aboutData.availability ? 'var(--accent-primary)' : 'var(--text-secondary)'
+                lineHeight: 1.5
               }}>
-                {aboutData.availability ? '🟢 Available for new projects' : '🔴 Currently unavailable'}
-              </p>
-            </div>
-
-            {/* Response Time */}
-            <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
-              <h3 style={{ 
-                fontSize: '1.2rem', 
-                marginBottom: 'var(--spacing-md)',
-                color: 'var(--accent-primary)'
-              }}>
-                ⏱️ Response Time
-              </h3>
-              <p style={{ fontSize: '1rem', color: 'var(--text-secondary)' }}>
-                I typically respond within 24-48 hours during business days.
+                {aboutData.contact.availability}
               </p>
             </div>
           </div>

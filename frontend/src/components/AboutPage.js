@@ -21,8 +21,8 @@ const AboutPage = () => {
         textAlign: 'center'
       }}>
         <div style={{ 
-          width: '200px', 
-          height: '200px', 
+          width: 'clamp(150px, 25vw, 200px)', 
+          height: 'clamp(150px, 25vw, 200px)', 
           borderRadius: '50%',
           margin: '0 auto var(--spacing-xl)',
           backgroundImage: `url(${aboutData.avatar})`,
@@ -32,7 +32,7 @@ const AboutPage = () => {
         }} />
         
         <h1 className="text-embossed" style={{ 
-          fontSize: '3rem', 
+          fontSize: 'clamp(2rem, 6vw, 3rem)', 
           marginBottom: 'var(--spacing-lg)',
           fontFamily: 'var(--font-display)'
         }}>
@@ -40,7 +40,7 @@ const AboutPage = () => {
         </h1>
         
         <p className="text-engraved" style={{ 
-          fontSize: '1.5rem', 
+          fontSize: 'clamp(1.1rem, 3vw, 1.5rem)', 
           marginBottom: 'var(--spacing-xl)',
           maxWidth: '600px',
           margin: '0 auto var(--spacing-xl)'
@@ -49,7 +49,7 @@ const AboutPage = () => {
         </p>
         
         <p style={{ 
-          fontSize: '1.2rem', 
+          fontSize: 'clamp(0.9rem, 2.5vw, 1.2rem)', 
           lineHeight: 1.7,
           maxWidth: '800px',
           margin: '0 auto',
@@ -65,7 +65,7 @@ const AboutPage = () => {
         marginBottom: 'var(--spacing-2xl)'
       }}>
         <h2 className="text-embossed" style={{ 
-          fontSize: '2.5rem', 
+          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
           marginBottom: 'var(--spacing-xl)',
           textAlign: 'center'
         }}>
@@ -74,7 +74,7 @@ const AboutPage = () => {
         
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 'var(--spacing-xl)'
         }}>
           {skillCategories.map(category => {
@@ -86,7 +86,7 @@ const AboutPage = () => {
                 padding: 'var(--spacing-lg)'
               }}>
                 <h3 style={{ 
-                  fontSize: '1.5rem', 
+                  fontSize: 'clamp(1.2rem, 3vw, 1.5rem)', 
                   marginBottom: 'var(--spacing-lg)',
                   color: 'var(--accent-primary)',
                   textAlign: 'center'
@@ -102,10 +102,17 @@ const AboutPage = () => {
                         justifyContent: 'space-between',
                         marginBottom: 'var(--spacing-xs)'
                       }}>
-                        <span style={{ fontSize: '0.9rem' }}>{skill.name}</span>
                         <span style={{ 
-                          fontSize: '0.8rem', 
-                          color: 'var(--text-secondary)' 
+                          fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
+                          wordBreak: 'break-word'
+                        }}>
+                          {skill.name}
+                        </span>
+                        <span style={{ 
+                          fontSize: 'clamp(0.7rem, 2vw, 0.8rem)', 
+                          color: 'var(--text-secondary)',
+                          flexShrink: 0,
+                          marginLeft: 'var(--spacing-sm)'
                         }}>
                           {skill.level}%
                         </span>
@@ -125,7 +132,7 @@ const AboutPage = () => {
                       </div>
                       {skill.description && (
                         <p style={{ 
-                          fontSize: '0.8rem', 
+                          fontSize: 'clamp(0.7rem, 2vw, 0.8rem)', 
                           color: 'var(--text-secondary)',
                           marginTop: 'var(--spacing-xs)',
                           lineHeight: 1.4
@@ -148,7 +155,7 @@ const AboutPage = () => {
         marginBottom: 'var(--spacing-2xl)'
       }}>
         <h2 className="text-embossed" style={{ 
-          fontSize: '2.5rem', 
+          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
           marginBottom: 'var(--spacing-xl)',
           textAlign: 'center'
         }}>
@@ -157,18 +164,21 @@ const AboutPage = () => {
         
         <div style={{ 
           display: 'grid', 
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
           gap: 'var(--spacing-xl)'
         }}>
           <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
             <h3 style={{ 
-              fontSize: '1.3rem', 
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
               marginBottom: 'var(--spacing-md)',
               color: 'var(--accent-primary)'
             }}>
               🎨 Design with Emotion
             </h3>
-            <p style={{ lineHeight: 1.6 }}>
+            <p style={{ 
+              lineHeight: 1.6,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+            }}>
               Every project begins with understanding the emotional core. Whether it's the thrill of discovery in a game, 
               the comfort of familiarity in a brand, or the wonder of exploration in a story—emotion drives design decisions.
             </p>
@@ -176,13 +186,16 @@ const AboutPage = () => {
           
           <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
             <h3 style={{ 
-              fontSize: '1.3rem', 
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
               marginBottom: 'var(--spacing-md)',
               color: 'var(--accent-primary)'
             }}>
               ⚡ Code with Purpose
             </h3>
-            <p style={{ lineHeight: 1.6 }}>
+            <p style={{ 
+              lineHeight: 1.6,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+            }}>
               Technology serves the creative vision. Clean, efficient code that's maintainable and scalable, 
               but never at the expense of the user experience or artistic integrity.
             </p>
@@ -190,15 +203,86 @@ const AboutPage = () => {
           
           <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
             <h3 style={{ 
-              fontSize: '1.3rem', 
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
               marginBottom: 'var(--spacing-md)',
               color: 'var(--accent-primary)'
             }}>
               ✍️ Write with Vision
             </h3>
-            <p style={{ lineHeight: 1.6 }}>
+            <p style={{ 
+              lineHeight: 1.6,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+            }}>
               Stories that transport, characters that resonate, worlds that feel lived-in. 
-              Every word serves the larger narrative and emotional journey.
+              Every word serves the narrative, every scene builds toward the climax.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Experience Section */}
+      <section className="neumorphic-raised" style={{ 
+        padding: 'var(--spacing-2xl)', 
+        marginBottom: 'var(--spacing-2xl)'
+      }}>
+        <h2 className="text-embossed" style={{ 
+          fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
+          marginBottom: 'var(--spacing-xl)',
+          textAlign: 'center'
+        }}>
+          Experience & Background
+        </h2>
+        
+        <div style={{ 
+          display: 'grid', 
+          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+          gap: 'var(--spacing-xl)'
+        }}>
+          <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
+            <h3 style={{ 
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
+              marginBottom: 'var(--spacing-md)',
+              color: 'var(--accent-primary)'
+            }}>
+              🎓 Education
+            </h3>
+            <p style={{ 
+              lineHeight: 1.6,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+            }}>
+              {aboutData.education || 'Self-taught creative technologist with a passion for interdisciplinary learning and continuous growth.'}
+            </p>
+          </div>
+          
+          <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
+            <h3 style={{ 
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
+              marginBottom: 'var(--spacing-md)',
+              color: 'var(--accent-primary)'
+            }}>
+              💼 Work Experience
+            </h3>
+            <p style={{ 
+              lineHeight: 1.6,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+            }}>
+              {aboutData.experience || 'Freelance creative professional with experience across multiple industries and project types.'}
+            </p>
+          </div>
+          
+          <div className="neumorphic-inset" style={{ padding: 'var(--spacing-lg)' }}>
+            <h3 style={{ 
+              fontSize: 'clamp(1.1rem, 3vw, 1.3rem)', 
+              marginBottom: 'var(--spacing-md)',
+              color: 'var(--accent-primary)'
+            }}>
+              🎯 Current Focus
+            </h3>
+            <p style={{ 
+              lineHeight: 1.6,
+              fontSize: 'clamp(0.9rem, 2.5vw, 1rem)'
+            }}>
+              {aboutData.focus || 'Exploring the intersection of technology and creativity, building immersive experiences that connect with audiences on an emotional level.'}
             </p>
           </div>
         </div>

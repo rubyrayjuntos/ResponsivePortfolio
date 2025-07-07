@@ -45,7 +45,7 @@ const PortfolioPage = () => {
       }}>
         <div>
           <h1 className="text-embossed" style={{ 
-            fontSize: '2.5rem', 
+            fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
             marginBottom: 'var(--spacing-sm)'
           }}>
             Portfolio
@@ -55,50 +55,52 @@ const PortfolioPage = () => {
           </p>
         </div>
 
-                  <div style={{ display: 'flex', gap: 'var(--spacing-md)', alignItems: 'center' }}>
-            {/* Layout Toggle */}
-            <div style={{ display: 'flex', gap: 'var(--spacing-xs)' }}>
-              <button 
-                className={`btn btn-pill ${layout === 'grid' ? 'neumorphic-inset' : ''}`}
-                onClick={() => setLayout('grid')}
-                style={{ 
-                  padding: 'var(--spacing-sm)',
-                  fontSize: '0.9rem'
-                }}
-              >
-                Grid
-              </button>
-              <button 
-                className={`btn btn-pill ${layout === 'masonry' ? 'neumorphic-inset' : ''}`}
-                onClick={() => setLayout('masonry')}
-                style={{ 
-                  padding: 'var(--spacing-sm)',
-                  fontSize: '0.9rem'
-                }}
-              >
-                Masonry
-              </button>
-              <button 
-                className={`btn btn-pill ${layout === 'carousel' ? 'neumorphic-inset' : ''}`}
-                onClick={() => setLayout('carousel')}
-                style={{ 
-                  padding: 'var(--spacing-sm)',
-                  fontSize: '0.9rem'
-                }}
-              >
-                Carousel
-              </button>
-            </div>
+        <div style={{ display: 'flex', gap: 'var(--spacing-md)', alignItems: 'center', flexWrap: 'wrap' }}>
+          {/* Layout Toggle - Hidden on very small screens */}
+          <div style={{ display: 'flex', gap: 'var(--spacing-xs)' }}>
+            <button 
+              className={`btn btn-pill ${layout === 'grid' ? 'neumorphic-inset' : ''}`}
+              onClick={() => setLayout('grid')}
+              style={{ 
+                padding: 'var(--spacing-sm)',
+                fontSize: '0.9rem'
+              }}
+            >
+              Grid
+            </button>
+            <button 
+              className={`btn btn-pill ${layout === 'masonry' ? 'neumorphic-inset' : ''}`}
+              onClick={() => setLayout('masonry')}
+              style={{ 
+                padding: 'var(--spacing-sm)',
+                fontSize: '0.9rem'
+              }}
+            >
+              Masonry
+            </button>
+            <button 
+              className={`btn btn-pill ${layout === 'carousel' ? 'neumorphic-inset' : ''}`}
+              onClick={() => setLayout('carousel')}
+              style={{ 
+                padding: 'var(--spacing-sm)',
+                fontSize: '0.9rem'
+              }}
+            >
+              Carousel
+            </button>
+          </div>
 
           {/* Mobile Filter Toggle */}
           <button 
-            className="btn btn-pill"
+            className="btn btn-pill md:hidden"
             onClick={toggleSidebar}
             style={{ 
-              display: 'none',
               padding: 'var(--spacing-sm) var(--spacing-md)'
             }}
           >
+            <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
             Filters
           </button>
 
@@ -117,8 +119,8 @@ const PortfolioPage = () => {
       </div>
 
       <div style={{ display: 'flex', gap: 'var(--spacing-xl)' }}>
-        {/* Filter Sidebar */}
-        <aside style={{ 
+        {/* Filter Sidebar - Hidden on mobile */}
+        <aside className="hidden md:block" style={{ 
           width: '280px',
           flexShrink: 0,
           position: 'sticky',
@@ -164,7 +166,7 @@ const PortfolioPage = () => {
         )}
 
         {/* Projects Display */}
-        <main style={{ flex: '1' }}>
+        <main style={{ flex: '1', minWidth: 0 }}>
           {filteredProjects.length === 0 ? (
             <div className="neumorphic-raised" style={{ 
               padding: 'var(--spacing-2xl)', 
@@ -191,7 +193,8 @@ const PortfolioPage = () => {
             />
           ) : (
             <div className={layout === 'masonry' ? 'masonry' : 'grid'} style={{
-              gridTemplateColumns: layout === 'grid' ? 'repeat(auto-fill, minmax(300px, 1fr))' : undefined
+              gridTemplateColumns: layout === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : undefined,
+              gap: 'var(--spacing-lg)'
             }}>
               {filteredProjects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} layout={layout} index={index} />
@@ -200,19 +203,6 @@ const PortfolioPage = () => {
           )}
         </main>
       </div>
-
-      {/* Responsive Design - Using CSS-in-JS instead of jsx attribute */}
-      <style>{`
-        @media (max-width: 1024px) {
-          .container aside {
-            display: none;
-          }
-          
-          .container button[onClick*="toggleSidebar"] {
-            display: block !important;
-          }
-        }
-      `}</style>
     </div>
   );
 };

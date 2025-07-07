@@ -65,6 +65,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
       animate="visible"
       whileHover="hover"
       layout
+      style={{ width: '100%' }}
     >
       <Link 
         to={`/project/${project.slug}`} 
@@ -73,16 +74,17 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
           textDecoration: 'none',
           color: 'inherit',
           display: 'block',
-          height: isMasonry ? 'auto' : '400px',
+          height: isMasonry ? 'auto' : 'clamp(350px, 50vh, 400px)',
           overflow: 'hidden',
-          transition: 'all var(--transition-normal)'
+          transition: 'all var(--transition-normal)',
+          width: '100%'
         }}
       >
         {/* Project Image */}
         <motion.div 
           style={{
             width: '100%',
-            height: isMasonry ? '200px' : '200px',
+            height: isMasonry ? 'clamp(150px, 25vh, 200px)' : 'clamp(150px, 30vh, 200px)',
             backgroundImage: thumbnail ? `url(${thumbnail})` : 'none',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -102,7 +104,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
               justifyContent: 'center',
               height: '100%',
               color: 'var(--text-secondary)',
-              fontSize: '3rem'
+              fontSize: 'clamp(2rem, 5vw, 3rem)'
             }}>
               🖼️
             </div>
@@ -119,8 +121,9 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
                 color: 'var(--bg-primary)',
                 padding: 'var(--spacing-xs) var(--spacing-sm)',
                 borderRadius: 'var(--radius-sm)',
-                fontSize: '0.8rem',
-                fontWeight: 'bold'
+                fontSize: 'clamp(0.6rem, 2vw, 0.8rem)',
+                fontWeight: 'bold',
+                zIndex: 2
               }}
               variants={badgeVariants}
               initial="hidden"
@@ -141,8 +144,9 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
                 color: 'white',
                 padding: 'var(--spacing-xs) var(--spacing-sm)',
                 borderRadius: 'var(--radius-sm)',
-                fontSize: '0.8rem',
-                fontWeight: 'bold'
+                fontSize: 'clamp(0.6rem, 2vw, 0.8rem)',
+                fontWeight: 'bold',
+                zIndex: 2
               }}
               variants={badgeVariants}
               initial="hidden"
@@ -163,7 +167,8 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
                 color: 'white',
                 padding: 'var(--spacing-xs) var(--spacing-sm)',
                 borderRadius: 'var(--radius-sm)',
-                fontSize: '0.8rem'
+                fontSize: 'clamp(0.6rem, 2vw, 0.8rem)',
+                zIndex: 2
               }}
               variants={badgeVariants}
               initial="hidden"
@@ -178,7 +183,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
         <motion.div 
           style={{ 
             padding: 'var(--spacing-lg)',
-            height: isMasonry ? 'auto' : '200px',
+            height: isMasonry ? 'auto' : 'clamp(150px, 20vh, 200px)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between'
@@ -190,71 +195,70 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
           {/* Title and Subtitle */}
           <div>
             <h3 className="text-embossed" style={{ 
-              fontSize: '1.2rem', 
+              fontSize: 'clamp(1rem, 3vw, 1.2rem)', 
               marginBottom: 'var(--spacing-sm)',
-              lineHeight: 1.3
+              lineHeight: 1.3,
+              wordBreak: 'break-word'
             }}>
               {project.title}
             </h3>
             <p style={{ 
               color: 'var(--text-secondary)', 
-              fontSize: '0.9rem',
+              fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
               marginBottom: 'var(--spacing-md)',
-              lineHeight: 1.4
+              lineHeight: 1.4,
+              wordBreak: 'break-word'
             }}>
               {project.subtitle}
             </p>
           </div>
 
-          {/* Description (truncated for grid layout) */}
-          {!isMasonry && (
-            <p style={{ 
-              fontSize: '0.9rem',
-              lineHeight: 1.5,
-              color: 'var(--text-secondary)',
-              overflow: 'hidden',
-              display: '-webkit-box',
-              WebkitLineClamp: 3,
-              WebkitBoxOrient: 'vertical',
-              marginBottom: 'var(--spacing-md)'
-            }}>
-              {project.description}
-            </p>
-          )}
-
-          {/* Tags */}
+          {/* Project Types */}
           <div style={{ 
             display: 'flex', 
-            flexWrap: 'wrap', 
-            gap: 'var(--spacing-xs)',
-            marginTop: 'auto'
+            gap: 'var(--spacing-xs)', 
+            flexWrap: 'wrap',
+            marginBottom: 'var(--spacing-sm)'
           }}>
-            {project.tags?.slice(0, 3).map(tag => (
-              <span
-                key={tag.id}
+            {project.types.slice(0, 2).map((type) => (
+              <span 
+                key={type.id}
                 style={{
-                  backgroundColor: tag.color || 'var(--accent-secondary)',
-                  color: 'white',
+                  backgroundColor: 'var(--accent-primary)',
+                  color: 'var(--bg-primary)',
                   padding: 'var(--spacing-xs) var(--spacing-sm)',
                   borderRadius: 'var(--radius-sm)',
-                  fontSize: '0.7rem',
-                  fontWeight: 'bold'
+                  fontSize: 'clamp(0.6rem, 2vw, 0.7rem)',
+                  fontWeight: 'bold',
+                  whiteSpace: 'nowrap'
                 }}
               >
-                {tag.icon} {tag.label}
+                {type.name}
               </span>
             ))}
-            {project.tags?.length > 3 && (
-              <span style={{
-                backgroundColor: 'var(--bg-secondary)',
-                color: 'var(--text-secondary)',
-                padding: 'var(--spacing-xs) var(--spacing-sm)',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.7rem'
-              }}>
-                +{project.tags.length - 3} more
+          </div>
+
+          {/* Project Tags */}
+          <div style={{ 
+            display: 'flex', 
+            gap: 'var(--spacing-xs)', 
+            flexWrap: 'wrap'
+          }}>
+            {project.tags.slice(0, 3).map((tag) => (
+              <span 
+                key={tag.id}
+                style={{
+                  backgroundColor: 'var(--bg-secondary)',
+                  color: 'var(--text-secondary)',
+                  padding: 'var(--spacing-xs) var(--spacing-sm)',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: 'clamp(0.6rem, 2vw, 0.7rem)',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {tag.name}
               </span>
-            )}
+            ))}
           </div>
         </motion.div>
       </Link>
