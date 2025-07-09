@@ -24,7 +24,14 @@ export const FilterProvider = ({ children }) => {
   const [searchQuery, setSearchQuery] = useState('');
 
   // Get all projects with resolved data
-  const allProjects = getAllProjects();
+  const allProjects = useMemo(() => {
+    try {
+      return getAllProjects();
+    } catch (error) {
+      console.error('Error loading projects in FilterProvider:', error);
+      return [];
+    }
+  }, []);
 
   // Filter projects based on current filters
   const filteredProjects = useMemo(() => {

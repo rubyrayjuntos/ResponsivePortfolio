@@ -1,356 +1,694 @@
 {
   "media": [
     {
-      "id": "astronova-thumb",
-      "filename": "image-1751275271504-412693276.jpg",
-      "path": "/assets/images/astronova-asteroids/",
-      "description": "AstroNova game screenshot showing the mobile interface",
-      "alt": "Mobile asteroids game interface with neon graphics",
+      "id": "media-1751992584739-0",
+      "filename": "image-1751036670657-511534424.webp",
+      "path": "/uploads/projects/brand-identity-workflow/291d994e-f711-49fc-aa6b-1b0cc9619ebd.webp",
+      "description": "image-1751036670657-511534424.webp",
+      "alt": "image-1751036670657-511534424.webp",
       "dimensions": {
-        "width": 800,
-        "height": 600
+        "width": 1024,
+        "height": 1024
       },
       "type": "image",
-      "format": "jpg",
-      "size": "245KB",
-      "project": "astronova-asteroids",
-      "category": "thumbnail"
-    },
-    {
-      "id": "astronova-gallery-1",
-      "filename": "image-1751275271523-896378493.jpg",
-      "path": "/assets/images/astronova-asteroids/",
-      "description": "AstroNova gameplay screenshot",
-      "alt": "Asteroids game in action with particle effects",
-      "dimensions": {
-        "width": 1200,
-        "height": 800
-      },
-      "type": "image",
-      "format": "jpg",
-      "size": "456KB",
-      "project": "astronova-asteroids",
-      "category": "gallery"
-    },
-    {
-      "id": "cartas-thumb",
-      "filename": "image-1751272273801-818786439.png",
-      "path": "/assets/images/cartas-del-deseo/",
-      "description": "Cartas del Deseo tarot interface",
-      "alt": "Tarot card reading interface with mystical design",
-      "dimensions": {
-        "width": 600,
-        "height": 400
-      },
-      "type": "image",
-      "format": "png",
-      "size": "189KB",
-      "project": "cartas-del-deseo",
-      "category": "thumbnail"
-    },
-    {
-      "id": "cartas-gallery-1",
-      "filename": "image-1751275652851-408588635.jpg",
-      "path": "/assets/images/cartas-del-deseo/",
-      "description": "Cartas del Deseo reading session",
-      "alt": "Tarot reading in progress with animated cards",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "jpg",
-      "size": "312KB",
-      "project": "cartas-del-deseo",
-      "category": "gallery"
-    },
-    {
-      "id": "nova-thumb",
-      "filename": "image-1751348320898-1997273.png",
-      "path": "/assets/images/nova-writers-conspiracy/",
-      "description": "NOVA Writers Conspiracy dashboard",
-      "alt": "Collaborative writing platform interface",
-      "dimensions": {
-        "width": 1000,
-        "height": 700
-      },
-      "type": "image",
-      "format": "png",
-      "size": "567KB",
-      "project": "nova-writers-conspiracy",
-      "category": "thumbnail"
-    },
-    {
-      "id": "nova-gallery-1",
-      "filename": "image-1751348320969-368017186.png",
-      "path": "/assets/images/nova-writers-conspiracy/",
-      "description": "NOVA AI agents interface",
-      "alt": "AI writing assistants and collaboration tools",
-      "dimensions": {
-        "width": 1200,
-        "height": 800
-      },
-      "type": "image",
-      "format": "png",
-      "size": "789KB",
-      "project": "nova-writers-conspiracy",
-      "category": "gallery"
-    },
-    {
-      "id": "brand-thumb",
-      "filename": "image-1751272273801-818786439.png",
-      "path": "/assets/images/brand-identity-workflow/",
-      "description": "Brand Identity Workflow interface",
-      "alt": "AI-powered brand generation interface",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "png",
-      "size": "234KB",
+      "format": "webp",
+      "size": 190078,
       "project": "brand-identity-workflow",
-      "category": "thumbnail"
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T16:36:24.739Z",
+        "modified": "2025-07-08T16:36:24.739Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "brand-gallery-1",
-      "filename": "image-1751276238436-162990766.jpg",
-      "path": "/assets/images/brand-identity-workflow/",
-      "description": "Brand workflow automation process",
-      "alt": "Multi-agent brand creation workflow",
+      "id": "media-1751992819300-0",
+      "filename": "image-1751300731001-740870732.jpg",
+      "path": "/uploads/projects/astronova-asteroids/34e429c8-3b9d-4076-b424-c25a9178f528.webp",
+      "description": "image-1751300731001-740870732.jpg",
+      "alt": "image-1751300731001-740870732.jpg",
       "dimensions": {
-        "width": 1000,
-        "height": 700
+        "width": 887,
+        "height": 739
       },
       "type": "image",
-      "format": "jpg",
-      "size": "445KB",
+      "format": "webp",
+      "size": 24180,
+      "project": "astronova-asteroids",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T16:40:19.300Z",
+        "modified": "2025-07-08T16:40:19.300Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751992819366-1",
+      "filename": "image-1751300731020-176738013.jpg",
+      "path": "/uploads/projects/astronova-asteroids/cb99a046-f054-401b-ac97-0b2fd619f0a7.webp",
+      "description": "image-1751300731020-176738013.jpg",
+      "alt": "image-1751300731020-176738013.jpg",
+      "dimensions": {
+        "width": 890,
+        "height": 730
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 9676,
+      "project": "astronova-asteroids",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T16:40:19.366Z",
+        "modified": "2025-07-08T16:40:19.366Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997562124-0",
+      "filename": "cartas-del-deseo-thumb.jpg",
+      "path": "/uploads/projects/cartas-del-deseo/628ee804-161a-4322-b24e-f20f7d5f27b2.webp",
+      "description": "cartas-del-deseo-thumb.jpg",
+      "alt": "cartas-del-deseo-thumb.jpg",
+      "dimensions": {
+        "width": 3072,
+        "height": 3072
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 100636,
+      "project": "cartas-del-deseo",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T17:59:22.124Z",
+        "modified": "2025-07-08T17:59:22.124Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997562327-1",
+      "filename": "image-1751263807619-876868908.jpg",
+      "path": "/uploads/projects/cartas-del-deseo/d61f79ab-58e8-45d7-af8c-69bde0ab4fdb.webp",
+      "description": "image-1751263807619-876868908.jpg",
+      "alt": "image-1751263807619-876868908.jpg",
+      "dimensions": {
+        "width": 804,
+        "height": 2068
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 129228,
+      "project": "cartas-del-deseo",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T17:59:22.327Z",
+        "modified": "2025-07-08T17:59:22.327Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997562625-2",
+      "filename": "image-1751263807649-170940469.jpg",
+      "path": "/uploads/projects/cartas-del-deseo/ea921c50-2027-45a0-9c1a-a9136dc8690a.webp",
+      "description": "image-1751263807649-170940469.jpg",
+      "alt": "image-1751263807649-170940469.jpg",
+      "dimensions": {
+        "width": 804,
+        "height": 3584
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 240878,
+      "project": "cartas-del-deseo",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T17:59:22.625Z",
+        "modified": "2025-07-08T17:59:22.625Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997562979-3",
+      "filename": "image-1751263807717-928770322.jpg",
+      "path": "/uploads/projects/cartas-del-deseo/70912d76-088a-4737-b188-4d7faaae86f8.webp",
+      "description": "image-1751263807717-928770322.jpg",
+      "alt": "image-1751263807717-928770322.jpg",
+      "dimensions": {
+        "width": 804,
+        "height": 3664
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 271214,
+      "project": "cartas-del-deseo",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T17:59:22.979Z",
+        "modified": "2025-07-08T17:59:22.979Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997563272-4",
+      "filename": "image-1751263807739-382181484.jpg",
+      "path": "/uploads/projects/cartas-del-deseo/c523e837-7e15-451d-a5d2-ccac1edaea32.webp",
+      "description": "image-1751263807739-382181484.jpg",
+      "alt": "image-1751263807739-382181484.jpg",
+      "dimensions": {
+        "width": 804,
+        "height": 3336
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 283694,
+      "project": "cartas-del-deseo",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T17:59:23.272Z",
+        "modified": "2025-07-08T17:59:23.272Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997563576-5",
+      "filename": "image-1751266396733-435458325.jpg",
+      "path": "/uploads/projects/cartas-del-deseo/7b91fcec-b230-4a4b-b00e-cbf1b953de98.webp",
+      "description": "image-1751266396733-435458325.jpg",
+      "alt": "image-1751266396733-435458325.jpg",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 228966,
+      "project": "cartas-del-deseo",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T17:59:23.576Z",
+        "modified": "2025-07-08T17:59:23.576Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997614971-0",
+      "filename": "image-1751378397899-493698676.png",
+      "path": "/uploads/projects/nova-writers-conspiracy/29f40e7b-e4d6-4043-adc8-1920c207b5b8.webp",
+      "description": "image-1751378397899-493698676.png",
+      "alt": "image-1751378397899-493698676.png",
+      "dimensions": {
+        "width": 1024,
+        "height": 1536
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 80396,
+      "project": "nova-writers-conspiracy",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:00:14.971Z",
+        "modified": "2025-07-08T18:00:14.971Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997615113-1",
+      "filename": "image-1751378397937-737627257.png",
+      "path": "/uploads/projects/nova-writers-conspiracy/3e158185-0428-4f67-999a-05bbe93000ee.webp",
+      "description": "image-1751378397937-737627257.png",
+      "alt": "image-1751378397937-737627257.png",
+      "dimensions": {
+        "width": 1024,
+        "height": 1024
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 78018,
+      "project": "nova-writers-conspiracy",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:00:15.113Z",
+        "modified": "2025-07-08T18:00:15.113Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997678429-0",
+      "filename": "brand-identity-thumb.jpg",
+      "path": "/uploads/projects/brand-identity-workflow/ad60d586-34a9-486a-bcc7-57de44639d8c.webp",
+      "description": "brand-identity-thumb.jpg",
+      "alt": "brand-identity-thumb.jpg",
+      "dimensions": {
+        "width": 498,
+        "height": 753
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 12372,
       "project": "brand-identity-workflow",
-      "category": "gallery"
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:01:18.429Z",
+        "modified": "2025-07-08T18:01:18.429Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "portfolio-thumb",
-      "filename": "image-1751272479804-311588878.png",
-      "path": "/assets/images/ray-swan-portfolio/",
-      "description": "Ray Swan Portfolio homepage",
-      "alt": "Personal portfolio website with neumorphic design",
+      "id": "media-1751997678897-1",
+      "filename": "image-1751036670733-105898668.webp",
+      "path": "/uploads/projects/brand-identity-workflow/2493d5b6-33de-453b-8545-054f21e90e23.webp",
+      "description": "image-1751036670733-105898668.webp",
+      "alt": "image-1751036670733-105898668.webp",
       "dimensions": {
-        "width": 1200,
-        "height": 800
+        "width": 1024,
+        "height": 1024
       },
       "type": "image",
-      "format": "png",
-      "size": "678KB",
+      "format": "webp",
+      "size": 109922,
+      "project": "brand-identity-workflow",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:01:18.897Z",
+        "modified": "2025-07-08T18:01:18.897Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997730625-0",
+      "filename": "image-1751300769676-692008749.jpg",
+      "path": "/uploads/projects/ray-swan-portfolio/a538c5d9-014f-4fe2-8282-798ea35d3d51.webp",
+      "description": "image-1751300769676-692008749.jpg",
+      "alt": "image-1751300769676-692008749.jpg",
+      "dimensions": {
+        "width": 496,
+        "height": 787
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 14266,
       "project": "ray-swan-portfolio",
-      "category": "thumbnail"
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:02:10.625Z",
+        "modified": "2025-07-08T18:02:10.625Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "portfolio-gallery-1",
-      "filename": "image-1751272482308-370740828.png",
-      "path": "/assets/images/ray-swan-portfolio/",
-      "description": "Portfolio project showcase",
-      "alt": "Interactive project gallery with animations",
+      "id": "media-1751997730688-1",
+      "filename": "image-1751300769689-679313802.jpg",
+      "path": "/uploads/projects/ray-swan-portfolio/1159798d-c865-499b-8416-9d982fee69d4.webp",
+      "description": "image-1751300769689-679313802.jpg",
+      "alt": "image-1751300769689-679313802.jpg",
       "dimensions": {
-        "width": 1000,
-        "height": 700
+        "width": 502,
+        "height": 911
       },
       "type": "image",
-      "format": "png",
-      "size": "523KB",
+      "format": "webp",
+      "size": 34084,
       "project": "ray-swan-portfolio",
-      "category": "gallery"
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:02:10.688Z",
+        "modified": "2025-07-08T18:02:10.688Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "portfolio-gallery-2",
-      "filename": "image-1751272485244-258038440.png",
-      "path": "/assets/images/ray-swan-portfolio/",
-      "description": "Portfolio responsive design",
-      "alt": "Mobile and tablet responsive layouts",
+      "id": "media-1751997730749-2",
+      "filename": "image-1751300769719-353251132.jpg",
+      "path": "/uploads/projects/ray-swan-portfolio/46c0709b-20c5-4aed-9ab1-94aadb52bc84.webp",
+      "description": "image-1751300769719-353251132.jpg",
+      "alt": "image-1751300769719-353251132.jpg",
       "dimensions": {
-        "width": 800,
-        "height": 600
+        "width": 501,
+        "height": 912
       },
       "type": "image",
-      "format": "png",
-      "size": "345KB",
+      "format": "webp",
+      "size": 28830,
       "project": "ray-swan-portfolio",
-      "category": "gallery"
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:02:10.749Z",
+        "modified": "2025-07-08T18:02:10.749Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "media-1751839341972-0",
-      "filename": "image-1751038778441-774109876.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751038778441-774109876.webp",
-      "alt": "image-1751038778441-774109876.webp",
+      "id": "media-1751997730802-3",
+      "filename": "image-1751300769762-782620460.jpg",
+      "path": "/uploads/projects/ray-swan-portfolio/a3e7c103-77d4-4de9-b6ff-8e9fc05ee6d0.webp",
+      "description": "image-1751300769762-782620460.jpg",
+      "alt": "image-1751300769762-782620460.jpg",
       "dimensions": {
-        "width": 800,
-        "height": 600
+        "width": 503,
+        "height": 759
       },
       "type": "image",
       "format": "webp",
-      "size": "262KB",
-      "project": "",
-      "category": "thumbnail"
+      "size": 15932,
+      "project": "ray-swan-portfolio",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:02:10.802Z",
+        "modified": "2025-07-08T18:02:10.802Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "media-1751839342686-1",
-      "filename": "image-1751038778476-357842403.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751038778476-357842403.webp",
-      "alt": "image-1751038778476-357842403.webp",
+      "id": "media-1751997730819-4",
+      "filename": "portfolio-cover.png",
+      "path": "/uploads/projects/ray-swan-portfolio/f8aaf849-4655-4674-978c-e1d00dc87905.webp",
+      "description": "portfolio-cover.png",
+      "alt": "portfolio-cover.png",
       "dimensions": {
-        "width": 800,
-        "height": 600
+        "width": 409,
+        "height": 156
       },
       "type": "image",
       "format": "webp",
-      "size": "225KB",
-      "project": "",
-      "category": "gallery"
+      "size": 4786,
+      "project": "ray-swan-portfolio",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:02:10.819Z",
+        "modified": "2025-07-08T18:02:10.819Z",
+        "author": "",
+        "license": ""
+      }
     },
     {
-      "id": "media-1751839343371-2",
-      "filename": "image-1751038778488-412642831.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751038778488-412642831.webp",
-      "alt": "image-1751038778488-412642831.webp",
+      "id": "media-1751997817109-0",
+      "filename": "image-1751044717888-777594426.webp",
+      "path": "/uploads/projects/tarot-moderno/024f0485-33cf-4bdc-94bc-a8978d8b1ec8.webp",
+      "description": "image-1751044717888-777594426.webp",
+      "alt": "image-1751044717888-777594426.webp",
       "dimensions": {
-        "width": 800,
-        "height": 600
+        "width": 1024,
+        "height": 1792
       },
       "type": "image",
       "format": "webp",
-      "size": "198KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839344054-3",
-      "filename": "image-1751038778491-895454268.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751038778491-895454268.webp",
-      "alt": "image-1751038778491-895454268.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "265KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839344755-4",
-      "filename": "image-1751044050029-193046062.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751044050029-193046062.webp",
-      "alt": "image-1751044050029-193046062.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "209KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839345439-5",
-      "filename": "image-1751044050029-230916373.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751044050029-230916373.webp",
-      "alt": "image-1751044050029-230916373.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "220KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839346119-6",
-      "filename": "image-1751044050030-458648850.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751044050030-458648850.webp",
-      "alt": "image-1751044050030-458648850.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "198KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839346787-7",
-      "filename": "image-1751044050030-646433610.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751044050030-646433610.webp",
-      "alt": "image-1751044050030-646433610.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "234KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839347475-8",
-      "filename": "image-1751044050030-722723329.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751044050030-722723329.webp",
-      "alt": "image-1751044050030-722723329.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "249KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839348181-9",
-      "filename": "image-1751044050030-996516965.webp",
-      "path": "/src/assets/images//",
-      "description": "image-1751044050030-996516965.webp",
-      "alt": "image-1751044050030-996516965.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "230KB",
-      "project": "",
-      "category": "gallery"
-    },
-    {
-      "id": "media-1751839348879-10",
-      "filename": "image-1751044050059-298724638.webp",
-      "path": "/assets/images/tarot-moderno/",
-      "description": "image-1751044050059-298724638.webp",
-      "alt": "image-1751044050059-298724638.webp",
-      "dimensions": {
-        "width": 800,
-        "height": 600
-      },
-      "type": "image",
-      "format": "webp",
-      "size": "194KB",
+      "size": 366214,
       "project": "tarot-moderno",
-      "category": "gallery"
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:37.109Z",
+        "modified": "2025-07-08T18:03:37.109Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997817426-1",
+      "filename": "image-1751044717889-754228597.webp",
+      "path": "/uploads/projects/tarot-moderno/10defcda-5c28-4518-835b-cb567f222124.webp",
+      "description": "image-1751044717889-754228597.webp",
+      "alt": "image-1751044717889-754228597.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 324902,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:37.426Z",
+        "modified": "2025-07-08T18:03:37.426Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997817732-2",
+      "filename": "image-1751044717974-270127805.webp",
+      "path": "/uploads/projects/tarot-moderno/953fadc7-dc0b-4f86-b3f3-434ef5947d75.webp",
+      "description": "image-1751044717974-270127805.webp",
+      "alt": "image-1751044717974-270127805.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 281418,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:37.732Z",
+        "modified": "2025-07-08T18:03:37.732Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997818232-3",
+      "filename": "image-1751044717994-102595284.webp",
+      "path": "/uploads/projects/tarot-moderno/316e8345-7148-404a-bbae-2be8e3837a9f.webp",
+      "description": "image-1751044717994-102595284.webp",
+      "alt": "image-1751044717994-102595284.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 378384,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:38.232Z",
+        "modified": "2025-07-08T18:03:38.232Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997818561-4",
+      "filename": "image-1751044717996-711607803.webp",
+      "path": "/uploads/projects/tarot-moderno/fb1daf4c-5368-44a2-83d1-76c8ebcd7621.webp",
+      "description": "image-1751044717996-711607803.webp",
+      "alt": "image-1751044717996-711607803.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 342672,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:38.561Z",
+        "modified": "2025-07-08T18:03:38.561Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997818875-5",
+      "filename": "image-1751044717997-781508731.webp",
+      "path": "/uploads/projects/tarot-moderno/e2d010a2-b1eb-4ddc-9792-8cf5c9e013b1.webp",
+      "description": "image-1751044717997-781508731.webp",
+      "alt": "image-1751044717997-781508731.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 273168,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:38.875Z",
+        "modified": "2025-07-08T18:03:38.875Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997819247-6",
+      "filename": "image-1751044718018-401323330.webp",
+      "path": "/uploads/projects/tarot-moderno/5cb5b08f-a9b6-490b-85e1-e6073e170095.webp",
+      "description": "image-1751044718018-401323330.webp",
+      "alt": "image-1751044718018-401323330.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 441854,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:39.247Z",
+        "modified": "2025-07-08T18:03:39.247Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997819534-7",
+      "filename": "image-1751044718026-724169504.webp",
+      "path": "/uploads/projects/tarot-moderno/417aea6a-601f-43b0-9bf1-ee85185cd35e.webp",
+      "description": "image-1751044718026-724169504.webp",
+      "alt": "image-1751044718026-724169504.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 240438,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:39.534Z",
+        "modified": "2025-07-08T18:03:39.534Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997819871-8",
+      "filename": "image-1751044718026-762334360.webp",
+      "path": "/uploads/projects/tarot-moderno/114c9672-1f1d-4f2b-a992-84b6d70ea5fb.webp",
+      "description": "image-1751044718026-762334360.webp",
+      "alt": "image-1751044718026-762334360.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 407048,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:39.871Z",
+        "modified": "2025-07-08T18:03:39.871Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997820184-9",
+      "filename": "image-1751044718086-141122266.webp",
+      "path": "/uploads/projects/tarot-moderno/3e9ad5f5-5757-49c1-a6e8-cd6ee3d60f7f.webp",
+      "description": "image-1751044718086-141122266.webp",
+      "alt": "image-1751044718086-141122266.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 328974,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:40.184Z",
+        "modified": "2025-07-08T18:03:40.184Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997820477-10",
+      "filename": "image-1751044718360-162846185.webp",
+      "path": "/uploads/projects/tarot-moderno/797cab48-8c51-4b97-b762-0c8de9690a73.webp",
+      "description": "image-1751044718360-162846185.webp",
+      "alt": "image-1751044718360-162846185.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 261930,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:40.477Z",
+        "modified": "2025-07-08T18:03:40.477Z",
+        "author": "",
+        "license": ""
+      }
+    },
+    {
+      "id": "media-1751997820770-11",
+      "filename": "image-1751044718370-516239350.webp",
+      "path": "/uploads/projects/tarot-moderno/b4192d82-9a47-42ac-a9eb-59337f4f345b.webp",
+      "description": "image-1751044718370-516239350.webp",
+      "alt": "image-1751044718370-516239350.webp",
+      "dimensions": {
+        "width": 1024,
+        "height": 1792
+      },
+      "type": "image",
+      "format": "webp",
+      "size": 203460,
+      "project": "tarot-moderno",
+      "category": "gallery",
+      "tags": [],
+      "metadata": {
+        "created": "2025-07-08T18:03:40.770Z",
+        "modified": "2025-07-08T18:03:40.770Z",
+        "author": "",
+        "license": ""
+      }
     }
   ]
 }

@@ -183,6 +183,32 @@
       "related": ["creative", "content", "narrative"]
     },
     {
+      "id": "art",
+      "label": "Art",
+      "description": "Visual art, design, and creative work",
+      "emotion": "inspired",
+      "visual": "paint palette",
+      "category": "creative",
+      "color": "#A3BFFA",
+      "icon": "🎨",
+      "priority": 12,
+      "usage": 1,
+      "related": ["creative", "visual", "design"]
+    },
+    {
+      "id": "code",
+      "label": "Code",
+      "description": "Programming, development, and technical work",
+      "emotion": "focused",
+      "visual": "brackets",
+      "category": "technology",
+      "color": "#7EE787",
+      "icon": "💻",
+      "priority": 13,
+      "usage": 1,
+      "related": ["development", "technical", "software"]
+    },
+    {
       "id": "collaborative",
       "label": "Collaborative",
       "description": "Multi-user and team-based features",

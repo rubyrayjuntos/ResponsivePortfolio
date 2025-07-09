@@ -153,6 +153,28 @@
       "label": "Email",
       "status": "active",
       "priority": 1
+    },
+    {
+      "id": "tech-functional-spec",
+      "type": "document",
+      "url": "/documents/portfolio-specification.md",
+      "description": "Site Specification",
+      "project": "ray-swan-portfolio",
+      "icon": "✍️",
+      "label": "Specification",
+      "status": "active",
+      "priority": 1
+    },
+    {
+      "id": "neumorphic-interface-guide",
+      "type": "document",
+      "url": "/documents/neumorphic-interface-guide.md",
+      "description": "Neumorphic Interface Implementation Guide",
+      "project": "ray-swan-portfolio",
+      "icon": "🎨",
+      "label": "Interface Guide",
+      "status": "active",
+      "priority": 2
     }
   ]
 } 

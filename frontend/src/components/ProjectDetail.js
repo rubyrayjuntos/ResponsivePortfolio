@@ -1,13 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getProjectById } from '../utils/dataResolver';
 import { getProjectThumbnail, getProjectGallery } from '../utils/imageUtils';
+import MarkdownModal from './MarkdownModal';
+import { getPrimaryCategoryTag } from '../utils/categoryMapper';
+
+const CATEGORY_BORDER_VAR = {
+  art: '--border-art',
+  code: '--border-code',
+  writing: '--border-writing',
+};
+const CATEGORY_GLOW_VAR = {
+  art: '--glow-art',
+  code: '--glow-code',
+  writing: '--glow-writing',
+};
 
 const ProjectDetail = () => {
   const { slug } = useParams();
-  const project = getProjectById(slug);
+  const [project, setProject] = useState(null);
+  const [loading, setLoading] = useState(true);
   const [activeImage, setActiveImage] = useState(0);
+  const [modalState, setModalState] = useState({
+    isOpen: false,
+    documentUrl: null,
+    title: ''
+  });
+
+  // Load project data
+  useEffect(() => {
+    const loadProject = async () => {
+      try {
+        setLoading(true);
+        const projectData = await getProjectById(slug);
+        setProject(projectData);
+      } catch (error) {
+        console.error('Error loading project:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadProject();
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <div className="container" style={{ paddingTop: 'var(--spacing-2xl)' }}>
+        <div className="neumorphic-raised" style={{ 
+          padding: 'var(--spacing-2xl)', 
+          textAlign: 'center'
+        }}>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+          <p style={{ marginTop: 'var(--spacing-lg)', color: 'var(--text-secondary)' }}>
+            Loading project...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   if (!project) {
     return (
@@ -25,6 +77,26 @@ const ProjectDetail = () => {
 
   const thumbnail = getProjectThumbnail(project);
   const galleryImages = getProjectGallery(project);
+  const primaryCategory = getPrimaryCategoryTag(project);
+  const borderColor = primaryCategory ? `var(${CATEGORY_BORDER_VAR[primaryCategory]})` : 'transparent';
+  const boxShadow = primaryCategory ? `0 0 0 3px var(${CATEGORY_BORDER_VAR[primaryCategory]}), var(${CATEGORY_GLOW_VAR[primaryCategory]})` : undefined;
+
+  // Modal handlers
+  const openDocumentModal = (documentUrl, title) => {
+    setModalState({
+      isOpen: true,
+      documentUrl,
+      title
+    });
+  };
+
+  const closeDocumentModal = () => {
+    setModalState({
+      isOpen: false,
+      documentUrl: null,
+      title: ''
+    });
+  };
 
   // Animation variants
   const containerVariants = {
@@ -75,7 +147,16 @@ const ProjectDetail = () => {
         className="neumorphic-raised" 
         style={{ 
           padding: 'var(--spacing-2xl)', 
-          marginBottom: 'var(--spacing-2xl)'
+          marginBottom: 'var(--spacing-2xl)',
+          border: `3px solid ${borderColor}`,
+          boxShadow,
+          borderRadius: 'var(--radius-md)',
+          transition: 'box-shadow 0.3s, border-color 0.3s',
+        }}
+        whileHover={{
+          boxShadow: primaryCategory
+            ? `0 0 0 3px var(${CATEGORY_BORDER_VAR[primaryCategory]}), 0 0 24px var(${CATEGORY_BORDER_VAR[primaryCategory]})`
+            : undefined,
         }}
         variants={itemVariants}
       >
@@ -227,19 +308,44 @@ const ProjectDetail = () => {
               <div style={{ marginBottom: 'var(--spacing-lg)' }}>
                 <h3 style={{ fontSize: '1.1rem', marginBottom: 'var(--spacing-sm)' }}>Links</h3>
                 <div style={{ display: 'flex', gap: 'var(--spacing-md)', flexWrap: 'wrap' }}>
-                  {project.links.map(link => (
-                    <a
-                      key={link.id}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="btn btn-pill"
-                      style={{ textDecoration: 'none' }}
-                    >
-                      {link.icon && <span>{link.icon}</span>}
-                      {link.label}
-                    </a>
-                  ))}
+                  {project.links.map(link => {
+                    // Handle document links differently
+                    if (link.type === 'document') {
+                      return (
+                        <button
+                          key={link.id}
+                          onClick={() => openDocumentModal(link.url, link.label)}
+                          className="btn btn-pill"
+                          style={{ 
+                            textDecoration: 'none',
+                            border: 'none',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 'var(--spacing-xs)'
+                          }}
+                        >
+                          {link.icon && <span>{link.icon}</span>}
+                          {link.label}
+                        </button>
+                      );
+                    }
+                    
+                    // Handle regular links
+                    return (
+                      <a
+                        key={link.id}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn btn-pill"
+                        style={{ textDecoration: 'none' }}
+                      >
+                        {link.icon && <span>{link.icon}</span>}
+                        {link.label}
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -366,6 +472,14 @@ const ProjectDetail = () => {
           </Link>
         </div>
       </motion.div>
+
+      {/* Markdown Modal */}
+      <MarkdownModal
+        isOpen={modalState.isOpen}
+        onClose={closeDocumentModal}
+        documentUrl={modalState.documentUrl}
+        title={modalState.title}
+      />
     </motion.div>
   );
 };

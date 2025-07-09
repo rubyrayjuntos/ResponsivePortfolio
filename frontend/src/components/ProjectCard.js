@@ -2,39 +2,46 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { getProjectThumbnail } from '../utils/imageUtils';
+import { getPrimaryCategoryTag } from '../utils/categoryMapper';
+
+const CATEGORY_BORDER_VAR = {
+  art: '--border-art',
+  code: '--border-code',
+  writing: '--border-writing',
+};
+const CATEGORY_GLOW_VAR = {
+  art: '--glow-art',
+  code: '--glow-code',
+  writing: '--glow-writing',
+};
 
 const ProjectCard = ({ project, layout, index = 0 }) => {
   const isMasonry = layout === 'masonry';
-
-  // Get thumbnail using the new utility function
   const thumbnail = getProjectThumbnail(project);
+  const primaryCategory = getPrimaryCategoryTag(project);
 
   // Animation variants
   const cardVariants = {
-    hidden: { 
-      opacity: 0, 
-      y: 20,
-      scale: 0.95
-    },
+    hidden: { opacity: 0, y: 20, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: {
-        duration: 0.5,
-        delay: index * 0.1,
-        ease: "easeOut"
-      }
+      transition: { duration: 0.5, delay: index * 0.1, ease: 'easeOut' },
     },
     hover: {
       y: -8,
       scale: 1.02,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut"
-      }
-    }
+      boxShadow: primaryCategory
+        ? `0 0 0 3px var(${CATEGORY_BORDER_VAR[primaryCategory]}), ${getComputedStyle(document.documentElement).getPropertyValue(CATEGORY_GLOW_VAR[primaryCategory])}`
+        : undefined,
+      transition: { duration: 0.3, ease: 'easeOut' },
+    },
   };
+
+  // Border and glow style
+  const borderColor = primaryCategory ? `var(${CATEGORY_BORDER_VAR[primaryCategory]})` : 'transparent';
+  const boxShadow = primaryCategory ? `0 0 0 3px var(${CATEGORY_BORDER_VAR[primaryCategory]}), var(${CATEGORY_GLOW_VAR[primaryCategory]})` : undefined;
 
   const imageVariants = {
     hover: {
@@ -65,12 +72,18 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
       animate="visible"
       whileHover="hover"
       layout
-      style={{ width: '100%' }}
+      style={{
+        width: '100%',
+        border: `3px solid ${borderColor}`,
+        boxShadow,
+        transition: 'box-shadow 0.3s, border-color 0.3s',
+        borderRadius: 'var(--radius-md)',
+      }}
     >
-      <Link 
-        to={`/project/${project.slug}`} 
-        className="neumorphic-raised" 
-        style={{ 
+      <Link
+        to={`/project/${project.slug}`}
+        className="neumorphic-raised"
+        style={{
           textDecoration: 'none',
           color: 'inherit',
           display: 'block',
@@ -81,7 +94,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
         }}
       >
         {/* Project Image */}
-        <motion.div 
+        <motion.div
           style={{
             width: '100%',
             height: isMasonry ? 'clamp(150px, 25vh, 200px)' : 'clamp(150px, 30vh, 200px)',
@@ -112,7 +125,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
 
           {/* Highlight Badge */}
           {project.highlight && (
-            <motion.div 
+            <motion.div
               style={{
                 position: 'absolute',
                 top: 'var(--spacing-sm)',
@@ -135,7 +148,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
 
           {/* Status Badge */}
           {project.status && project.status !== 'completed' && (
-            <motion.div 
+            <motion.div
               style={{
                 position: 'absolute',
                 top: 'var(--spacing-sm)',
@@ -158,7 +171,7 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
 
           {/* Year Badge */}
           {project.year && (
-            <motion.div 
+            <motion.div
               style={{
                 position: 'absolute',
                 bottom: 'var(--spacing-sm)',
@@ -180,8 +193,8 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
         </motion.div>
 
         {/* Project Content */}
-        <motion.div 
-          style={{ 
+        <motion.div
+          style={{
             padding: 'var(--spacing-lg)',
             height: isMasonry ? 'auto' : 'clamp(150px, 20vh, 200px)',
             display: 'flex',
@@ -194,16 +207,16 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
         >
           {/* Title and Subtitle */}
           <div>
-            <h3 className="text-embossed" style={{ 
-              fontSize: 'clamp(1rem, 3vw, 1.2rem)', 
+            <h3 className="text-embossed" style={{
+              fontSize: 'clamp(1rem, 3vw, 1.2rem)',
               marginBottom: 'var(--spacing-sm)',
               lineHeight: 1.3,
               wordBreak: 'break-word'
             }}>
               {project.title}
             </h3>
-            <p style={{ 
-              color: 'var(--text-secondary)', 
+            <p style={{
+              color: 'var(--text-secondary)',
               fontSize: 'clamp(0.8rem, 2.5vw, 0.9rem)',
               marginBottom: 'var(--spacing-md)',
               lineHeight: 1.4,
@@ -214,14 +227,14 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
           </div>
 
           {/* Project Types */}
-          <div style={{ 
-            display: 'flex', 
-            gap: 'var(--spacing-xs)', 
+          <div style={{
+            display: 'flex',
+            gap: 'var(--spacing-xs)',
             flexWrap: 'wrap',
             marginBottom: 'var(--spacing-sm)'
           }}>
             {project.types.slice(0, 2).map((type) => (
-              <span 
+              <span
                 key={type.id}
                 style={{
                   backgroundColor: 'var(--accent-primary)',
@@ -239,13 +252,13 @@ const ProjectCard = ({ project, layout, index = 0 }) => {
           </div>
 
           {/* Project Tags */}
-          <div style={{ 
-            display: 'flex', 
-            gap: 'var(--spacing-xs)', 
+          <div style={{
+            display: 'flex',
+            gap: 'var(--spacing-xs)',
             flexWrap: 'wrap'
           }}>
             {project.tags.slice(0, 3).map((tag) => (
-              <span 
+              <span
                 key={tag.id}
                 style={{
                   backgroundColor: 'var(--bg-secondary)',

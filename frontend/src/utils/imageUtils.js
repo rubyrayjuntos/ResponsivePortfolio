@@ -4,26 +4,34 @@
 
 /**
  * Get the correct path for an image based on its location
- * @param {string} path - The path from media.json
- * @param {string} filename - The filename from media.json
+ * @param {string} path - The path from media.json (includes filename)
+ * @param {string} filename - The filename from media.json (optional, for legacy support)
  * @returns {string} - The correct URL for the image
  */
-export const getImageUrl = (path, filename) => {
-  if (!path || !filename) return '';
+export const getImageUrl = (path, filename = '') => {
+  if (!path) return '';
   
-  // Remove leading slash if present
-  const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-  
-  // Construct the full path
-  const fullPath = `${cleanPath}${filename}`;
-  
-  // For development, we need to use the public URL
-  if (process.env.NODE_ENV === 'development') {
-    return `/${fullPath}`;
+  // For new upload system, path already includes filename
+  if (path.includes('/uploads/')) {
+    return path; // Path is already complete
   }
   
-  // For production, use the public URL
-  return `${process.env.PUBLIC_URL}/${fullPath}`;
+  // For legacy system, concatenate path + filename
+  if (filename) {
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    const fullPath = `${cleanPath}${filename}`;
+    
+    // For development, we need to use the public URL
+    if (process.env.NODE_ENV === 'development') {
+      return `/${fullPath}`;
+    }
+    
+    // For production, use the public URL
+    return `${process.env.PUBLIC_URL}/${fullPath}`;
+  }
+  
+  // Fallback for path-only
+  return path;
 };
 
 /**

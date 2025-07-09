@@ -1,14 +1,67 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { getAllProjects } from '../utils/dataResolver';
+import { getAllProjectsAsync } from '../utils/dataResolver';
 import { getProjectThumbnail } from '../utils/imageUtils';
+import { getAllCategories, getCategoryStatsDirect } from '../utils/categoryMapper';
 import aboutData from '../data/about.json';
 
+const CATEGORY_BORDER_VAR = {
+  art: '--border-art',
+  code: '--border-code',
+  writing: '--border-writing',
+};
+const CATEGORY_GLOW_VAR = {
+  art: '--glow-art',
+  code: '--glow-code',
+  writing: '--glow-writing',
+};
+
+const CATEGORY_IDS = ['art', 'code', 'writing'];
+
 const HomePage = () => {
+  const [allProjects, setAllProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Load projects from API
+  useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        setLoading(true);
+        const projects = await getAllProjectsAsync();
+        setAllProjects(projects);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadProjects();
+  }, []);
+
   // Get featured project with resolved data
-  const allProjects = getAllProjects();
   const featuredProject = allProjects.find(project => project.highlight);
+  
+  // Get category statistics using direct category field
+  const categoryStats = getCategoryStatsDirect(allProjects);
+  const categories = getAllCategories();
+
+  if (loading) {
+    return (
+      <div className="container" style={{ paddingTop: 'var(--spacing-2xl)' }}>
+        <div className="neumorphic-raised" style={{ 
+          padding: 'var(--spacing-2xl)', 
+          textAlign: 'center'
+        }}>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+          <p style={{ marginTop: 'var(--spacing-lg)', color: 'var(--text-secondary)' }}>
+            Loading projects...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   // Animation variants
   const containerVariants = {
@@ -104,51 +157,43 @@ const HomePage = () => {
         </motion.p>
 
         {/* Category Navigation */}
-        <motion.div 
-          style={{ 
-            display: 'flex', 
-            gap: 'var(--spacing-lg)', 
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            alignItems: 'center'
-          }}
-          variants={containerVariants}
-        >
-          {[
-            { text: 'CODE', subtitle: 'Development', delay: 0.8 },
-            { text: 'ART', subtitle: 'Creative', delay: 0.9 },
-            { text: 'WRITE', subtitle: 'Narrative', delay: 1.0 }
-          ].map((item, index) => (
+        <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', marginBottom: 'var(--spacing-2xl)' }}>
+          {CATEGORY_IDS.map(categoryId => (
             <motion.div
-              key={item.text}
-              variants={itemVariants}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: item.delay }}
+              key={categoryId}
+              whileHover={{
+                boxShadow: `0 0 0 3px var(${CATEGORY_BORDER_VAR[categoryId]}), 0 0 24px var(${CATEGORY_BORDER_VAR[categoryId]})`,
+              }}
+              style={{
+                border: `3px solid var(${CATEGORY_BORDER_VAR[categoryId]})`,
+                boxShadow: `0 0 0 3px var(${CATEGORY_BORDER_VAR[categoryId]}), var(${CATEGORY_GLOW_VAR[categoryId]})`,
+                borderRadius: 'var(--radius-full)',
+                transition: 'box-shadow 0.3s, border-color 0.3s',
+                display: 'inline-block',
+              }}
             >
-              <Link to="/portfolio" className="btn btn-circular" style={{ textDecoration: 'none' }}>
-                <motion.span 
-                  style={{ 
-                    fontSize: 'clamp(0.8rem, 2.5vw, 1.2rem)', 
-                    fontWeight: 'bold',
-                    textAlign: 'center'
-                  }}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  {item.text}
-                </motion.span>
-                <span style={{ 
-                  fontSize: 'clamp(0.6rem, 2vw, 0.8rem)', 
-                  opacity: 0.7,
-                  textAlign: 'center'
-                }}>
-                  {item.subtitle}
-                </span>
+              <Link
+                to={`/portfolio/${categoryId}`}
+                className="btn btn-circular"
+                style={{
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  fontWeight: 'bold',
+                  fontSize: '1.2rem',
+                  width: '120px',
+                  height: '120px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--bg-primary)',
+                }}
+              >
+                {categoryId.charAt(0).toUpperCase() + categoryId.slice(1)}
               </Link>
             </motion.div>
           ))}
-        </motion.div>
+        </div>
       </motion.section>
 
       {/* Featured Project */}

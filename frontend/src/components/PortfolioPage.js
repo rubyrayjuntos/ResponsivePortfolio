@@ -1,27 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useFilter } from '../context/FilterContext';
 import FilterSidebar from './FilterSidebar';
 import ProjectCard from './ProjectCard';
 import ProjectCarousel from './ProjectCarousel';
+import { getProjectsByDirectCategory, getCategoryInfo } from '../utils/categoryMapper';
+import { getAllProjectsAsync } from '../utils/dataResolver';
 
 const PortfolioPage = () => {
   const { category } = useParams();
-  const { filteredProjects, updateFilter, clearFilters } = useFilter();
+  const { filteredProjects } = useFilter();
+  const navigate = useNavigate();
   const [layout, setLayout] = useState('grid'); // 'grid', 'masonry', or 'carousel'
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [allProjects, setAllProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  // Set initial filter based on URL category
+  // Get category info
+  const categoryInfo = useMemo(() => 
+    category ? getCategoryInfo(category) : null, 
+    [category]
+  );
+  
+  // Load projects from API
   useEffect(() => {
+    const loadProjects = async () => {
+      try {
+        setLoading(true);
+        const projects = await getAllProjectsAsync();
+        setAllProjects(projects);
+      } catch (error) {
+        console.error('Error loading projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadProjects();
+  }, []);
+  const categoryProjects = useMemo(() => {
+    // Use filtered projects if available, otherwise use all projects
+    const projectsToFilter = filteredProjects.length > 0 ? filteredProjects : allProjects;
+    
     if (category) {
-      updateFilter('medium', category);
+      const filtered = getProjectsByDirectCategory(projectsToFilter, category);
+      return filtered;
     }
-  }, [category, updateFilter]);
+    return projectsToFilter;
+  }, [category, allProjects, filteredProjects]);
 
   // Determine layout based on category
   useEffect(() => {
     if (category === 'art') {
       setLayout('masonry');
+    } else if (category === 'writing') {
+      setLayout('carousel');
     } else {
       setLayout('grid');
     }
@@ -30,6 +63,26 @@ const PortfolioPage = () => {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  const handleClearFilters = () => {
+    navigate('/portfolio');
+  };
+
+  if (loading) {
+    return (
+      <div className="container" style={{ paddingTop: 'var(--spacing-2xl)' }}>
+        <div className="neumorphic-raised" style={{ 
+          padding: 'var(--spacing-2xl)', 
+          textAlign: 'center'
+        }}>
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+          <p style={{ marginTop: 'var(--spacing-lg)', color: 'var(--text-secondary)' }}>
+            Loading projects...
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container" style={{ paddingTop: 'var(--spacing-2xl)' }}>
@@ -48,10 +101,11 @@ const PortfolioPage = () => {
             fontSize: 'clamp(1.5rem, 4vw, 2.5rem)', 
             marginBottom: 'var(--spacing-sm)'
           }}>
-            Portfolio
+            {categoryInfo ? categoryInfo.label : 'Portfolio'}
           </h1>
           <p style={{ color: 'var(--text-secondary)' }}>
-            {filteredProjects.length} project{filteredProjects.length !== 1 ? 's' : ''} found
+            {categoryProjects.length} project{categoryProjects.length !== 1 ? 's' : ''} found
+            {categoryInfo && ` in ${categoryInfo.subtitle}`}
           </p>
         </div>
 
@@ -107,7 +161,7 @@ const PortfolioPage = () => {
           {/* Clear Filters */}
           <button 
             className="btn btn-pill"
-            onClick={clearFilters}
+            onClick={handleClearFilters}
             style={{ 
               padding: 'var(--spacing-sm) var(--spacing-md)',
               fontSize: '0.9rem'
@@ -167,27 +221,31 @@ const PortfolioPage = () => {
 
         {/* Projects Display */}
         <main style={{ flex: '1', minWidth: 0 }}>
-          {filteredProjects.length === 0 ? (
+          {categoryProjects.length === 0 ? (
             <div className="neumorphic-raised" style={{ 
               padding: 'var(--spacing-2xl)', 
               textAlign: 'center'
             }}>
               <h2 className="text-embossed" style={{ marginBottom: 'var(--spacing-lg)' }}>
                 No projects found
+                {categoryInfo && ` in ${categoryInfo.label}`}
               </h2>
               <p style={{ color: 'var(--text-secondary)', marginBottom: 'var(--spacing-lg)' }}>
-                Try adjusting your filters or search terms.
+                {categoryInfo 
+                  ? `No ${categoryInfo.subtitle.toLowerCase()} projects found. Try adjusting your filters.`
+                  : 'Try adjusting your filters or search terms.'
+                }
               </p>
               <button 
                 className="btn btn-pill"
-                onClick={clearFilters}
+                onClick={handleClearFilters}
               >
                 Clear Filters
               </button>
             </div>
           ) : layout === 'carousel' ? (
             <ProjectCarousel 
-              maxProjects={filteredProjects.length}
+              maxProjects={categoryProjects.length}
               autoPlay={true}
               autoPlayInterval={5000}
             />
@@ -196,7 +254,7 @@ const PortfolioPage = () => {
               gridTemplateColumns: layout === 'grid' ? 'repeat(auto-fill, minmax(280px, 1fr))' : undefined,
               gap: 'var(--spacing-lg)'
             }}>
-              {filteredProjects.map((project, index) => (
+              {categoryProjects.map((project, index) => (
                 <ProjectCard key={project.id} project={project} layout={layout} index={index} />
               ))}
             </div>

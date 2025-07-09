@@ -24,11 +24,16 @@
         "arcade",
         "offline-first",
         "retro",
-        "pwa"
+        "pwa",
+        "art"
       ],
       "mediaIds": [
         "astronova-thumb",
-        "astronova-gallery-1"
+        "astronova-gallery-1",
+        "media-1751992819300-0",
+        "media-1751992819366-1",
+        "media-1751992584739-0",
+        "123123"
       ],
       "linkIds": [
         "astronova-demo",
@@ -37,7 +42,9 @@
       "highlight": true,
       "emotion": "electrified nostalgia",
       "status": "completed",
-      "difficulty": "intermediate"
+      "difficulty": "intermediate",
+      "createdAt": "2025-07-08T16:40:57.658Z",
+      "updatedAt": "2025-07-08T16:41:28.621Z"
     },
     {
       "id": "cartas-del-deseo",
@@ -64,7 +71,8 @@
         "ai",
         "interactive",
         "spanglish",
-        "generative"
+        "generative",
+        "art"
       ],
       "mediaIds": [
         "cartas-thumb",
@@ -147,11 +155,14 @@
         "identity",
         "automation",
         "creative-tools",
-        "multi-agent"
+        "multi-agent",
+        "art"
       ],
       "mediaIds": [
         "brand-thumb",
-        "brand-gallery-1"
+        "brand-gallery-1",
+        "123123",
+        "media-1751992584739-0"
       ],
       "linkIds": [
         "brand-demo",
@@ -160,7 +171,9 @@
       "highlight": true,
       "emotion": "empowered clarity",
       "status": "completed",
-      "difficulty": "advanced"
+      "difficulty": "advanced",
+      "createdAt": "2025-07-08T16:38:35.422Z",
+      "updatedAt": "2025-07-08T16:38:35.422Z"
     },
     {
       "id": "ray-swan-portfolio",
@@ -188,7 +201,8 @@
         "portfolio",
         "secure",
         "responsive",
-        "accessibility"
+        "accessibility",
+        "art"
       ],
       "mediaIds": [
         "portfolio-thumb",
@@ -206,7 +220,7 @@
     },
     {
       "id": "tarot-moderno",
-      "title": "Tarot Moderno",
+      "title": "tarot-moderno",
       "slug": "tarot-moderno",
       "subtitle": "A modern take on the tarot",
       "description": "soft and hard ",
@@ -226,14 +240,37 @@
         "mobile",
         "arcade",
         "offline-first",
-        "retro"
+        "retro",
+        "art"
       ],
       "mediaIds": [],
       "linkIds": [],
       "highlight": false,
       "emotion": "electrified emotion",
       "status": "completed",
-      "difficulty": "intermediate"
+      "difficulty": "intermediate",
+      "createdAt": "2025-07-08T14:40:12.979Z",
+      "updatedAt": "2025-07-08T14:40:12.979Z"
+    },
+    {
+      "id": "test-project-1751998936140",
+      "title": "Test Project",
+      "slug": "test-project",
+      "subtitle": "A test project for verification",
+      "description": "This is a test project to verify that project creation is working properly.",
+      "year": 2025,
+      "typeIds": [],
+      "toolIds": [],
+      "tagIds": [
+        "art"
+      ],
+      "mediaIds": [],
+      "linkIds": [],
+      "highlight": false,
+      "emotion": "curiosity",
+      "status": "draft",
+      "difficulty": "beginner",
+      "createdAt": "2025-07-08T18:22:16.140Z"
     }
   ]
 }

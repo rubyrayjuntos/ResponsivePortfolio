@@ -1,5 +1,4 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { useTheme } from '../context/ThemeContext';
 import projectsData from '../data/projects.json';
 import mediaData from '../data/media.json';
 import typesData from '../data/types.json';

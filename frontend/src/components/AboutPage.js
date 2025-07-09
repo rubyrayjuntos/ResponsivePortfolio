@@ -4,7 +4,6 @@ import { getAllSkills, getSkillsByCategory } from '../utils/dataResolver';
 
 const AboutPage = () => {
   // Get all skills and group them by category
-  const allSkills = getAllSkills();
   const skillCategories = [
     'Frontend Development',
     'Backend Development', 

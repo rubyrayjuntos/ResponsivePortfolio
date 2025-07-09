@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { motion, AnimatePresence } from 'framer-motion';
 import './styles/neumorphic.css';
 
+// Context
+import { ThemeProvider } from './context/ThemeContext';
+import { FilterProvider } from './context/FilterContext';
+
 // Components
 import Header from './components/Header';
 import HomePage from './components/HomePage';
@@ -10,12 +14,21 @@ import PortfolioPage from './components/PortfolioPage';
 import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
 import ContactPage from './components/ContactPage';
-import DataManager from './components/DataManager';
 import CarouselDemo from './components/CarouselDemo';
+import AdminDashboard from './components/AdminDashboard';
 
-// Context
-import { ThemeProvider } from './context/ThemeContext';
-import { FilterProvider } from './context/FilterContext';
+// Admin components
+import ProjectsAdmin from './components/admin/ProjectsAdmin';
+import MediaAdmin from './components/admin/MediaAdmin';
+import SkillsAdmin from './components/admin/SkillsAdmin';
+import OverviewAdmin from './components/admin/OverviewAdmin';
+
+// Test utilities (for debugging)
+import './utils/testCategoryMapping';
+
+// Placeholder components for remaining admin sections
+const AboutAdmin = () => <div className="p-8">About Admin (form coming soon)</div>;
+const SettingsAdmin = () => <div className="p-8">Site Settings Admin (form coming soon)</div>;
 
 // Page transition component
 const PageTransition = ({ children }) => {
@@ -74,11 +87,15 @@ function App() {
                       <ContactPage />
                     </PageTransition>
                   } />
-                  <Route path="/admin/data" element={
-                    <PageTransition>
-                      <DataManager />
-                    </PageTransition>
-                  } />
+                  {/* New Admin Dashboard and nested routes */}
+                  <Route path="/admin" element={<AdminDashboard />}>
+                    <Route path="projects" element={<ProjectsAdmin />} />
+                    <Route path="media" element={<MediaAdmin />} />
+                    <Route path="skills" element={<SkillsAdmin />} />
+                    <Route path="overview" element={<OverviewAdmin />} />
+                    <Route path="about" element={<AboutAdmin />} />
+                    <Route path="settings" element={<SettingsAdmin />} />
+                  </Route>
                   <Route path="/demo/carousel" element={
                     <PageTransition>
                       <CarouselDemo />
